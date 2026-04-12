@@ -5,7 +5,9 @@ import Wallet from './screens/Wallet';
 import Insights from './screens/Insights';
 import Transactions from './screens/Transactions';
 import Markets from './screens/Markets';
-import { Home, Lightbulb, Briefcase, Search, ListTodo } from 'lucide-react';
+import Goals from './screens/Goals';
+import FinancialHealth from './screens/FinancialHealth';
+import { Home, Lightbulb, Briefcase, Search, ListTodo, Target } from 'lucide-react';
 
 const NavButton = ({ icon: Icon, label, active, onClick }) => (
   <button
@@ -24,6 +26,12 @@ export default function App() {
     switch (currentScreen) {
       case 'dashboard':
         return <Dashboard onNavigate={setCurrentScreen} />;
+      case 'goals':
+      case 'metas':
+        return <Goals />;
+      case 'health':
+      case 'saude':
+        return <FinancialHealth onBack={() => setCurrentScreen('dashboard')} />;
       case 'simular':
       case 'purchase_decision':
         return <PurchaseDecision onBack={() => setCurrentScreen('dashboard')} />;
@@ -44,8 +52,7 @@ export default function App() {
   };
 
   // Hide nav for detail-heavy simulator or specific full-screen flows if needed
-  // For now, simulator and markets feel like sub-flows that should keep nav or show a back button
-  const showNav = !['simular', 'purchase_decision', 'markets', 'mercados'].includes(currentScreen);
+  const showNav = !['simular', 'purchase_decision', 'markets', 'mercados', 'health', 'saude'].includes(currentScreen);
 
   return (
     <div className="min-h-screen bg-[#050A10] text-slate-200 font-sans selection:bg-cyan-500/30">
@@ -70,9 +77,15 @@ export default function App() {
           />
           <NavButton
             icon={ListTodo}
-            label="Transações"
+            label="Extrato"
             active={currentScreen === 'transactions' || currentScreen === 'transacoes'}
             onClick={() => setCurrentScreen('transactions')}
+          />
+          <NavButton
+            icon={Target}
+            label="Metas"
+            active={currentScreen === 'goals' || currentScreen === 'metas'}
+            onClick={() => setCurrentScreen('goals')}
           />
           <NavButton
             icon={Lightbulb}

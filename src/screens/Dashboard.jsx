@@ -64,7 +64,13 @@ export default function Dashboard({ onNavigate }) {
           <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-[60px] rounded-full -mr-16 -mt-16"></div>
         </Card>
 
-        <Card className="col-span-2 bg-slate-900/40 border-white/5 flex flex-col items-center justify-center text-center p-4">
+        <div
+          onClick={() => onNavigate('health')}
+          className="col-span-2"
+        >
+        <Card
+          className="w-full h-full bg-slate-900/40 border-white/5 flex flex-col items-center justify-center text-center p-4 cursor-pointer active:scale-95 transition-transform"
+        >
           <p className="text-[9px] text-muted uppercase tracking-widest font-bold mb-3">Health Score</p>
           <div className="relative w-20 h-20 flex items-center justify-center">
             <svg className="w-full h-full -rotate-90">
@@ -75,6 +81,7 @@ export default function Dashboard({ onNavigate }) {
           </div>
           <p className="text-[10px] text-accent font-black mt-2 uppercase">Excelente</p>
         </Card>
+        </div>
       </div>
 
       {/* Decision Indicators Row */}
