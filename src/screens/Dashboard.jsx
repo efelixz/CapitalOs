@@ -9,7 +9,9 @@ import {
   CreditCard,
   Wallet,
   Zap,
-  LayoutGrid
+  LayoutGrid,
+  Globe,
+  ShieldAlert
 } from 'lucide-react';
 import { Card, cn } from '../components/Card';
 import { IconButton } from '../components/IconButton';
@@ -120,8 +122,8 @@ export default function Dashboard({ onNavigate }) {
       <div className="flex justify-between px-1">
         <IconButton icon={TrendingUp} label="Simular" onClick={() => onNavigate('purchase_decision')} />
         <IconButton icon={Building2} label="Investir" onClick={() => onNavigate('wallet')} />
-        <IconButton icon={LayoutGrid} label="Extrato" onClick={() => onNavigate('transactions')} />
-        <IconButton icon={Brain} label="Análise" onClick={() => onNavigate('analytics')} />
+        <IconButton icon={ShieldAlert} label="Dívidas" onClick={() => onNavigate('debts')} />
+        <IconButton icon={Globe} label="Mudar" onClick={() => onNavigate('mobility')} />
       </div>
 
       {/* Insight Card */}

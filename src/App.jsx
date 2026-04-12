@@ -11,6 +11,9 @@ import AIChat from './screens/AIChat';
 import Profile from './screens/Profile';
 import LifeSimulator from './screens/LifeSimulator';
 import Analytics from './screens/Analytics';
+import DebtManager from './screens/DebtManager';
+import GlobalMobility from './screens/GlobalMobility';
+import Onboarding from './screens/Onboarding';
 import { Home, Lightbulb, Briefcase, Target, MessageSquare } from 'lucide-react';
 
 const NavButton = ({ icon: Icon, label, active, onClick }) => (
@@ -24,10 +27,12 @@ const NavButton = ({ icon: Icon, label, active, onClick }) => (
 );
 
 export default function App() {
-  const [currentScreen, setCurrentScreen] = useState('dashboard');
+  const [currentScreen, setCurrentScreen] = useState('onboarding');
 
   const renderScreen = () => {
     switch (currentScreen) {
+      case 'onboarding':
+        return <Onboarding onComplete={() => setCurrentScreen('dashboard')} />;
       case 'dashboard':
         return <Dashboard onNavigate={setCurrentScreen} />;
       case 'goals':
@@ -59,13 +64,19 @@ export default function App() {
       case 'markets':
       case 'mercados':
         return <Markets onBack={() => setCurrentScreen('dashboard')} />;
+      case 'debts':
+      case 'dividas':
+        return <DebtManager onBack={() => setCurrentScreen('dashboard')} />;
+      case 'mobility':
+      case 'mobilidade':
+        return <GlobalMobility onBack={() => setCurrentScreen('dashboard')} />;
       default:
         return <Dashboard onNavigate={setCurrentScreen} />;
     }
   };
 
   // Hide nav for specific focus flows
-  const showNav = !['purchase_decision', 'markets', 'mercados', 'health', 'saude', 'life_sim', 'profile'].includes(currentScreen);
+  const showNav = !['onboarding', 'purchase_decision', 'markets', 'mercados', 'health', 'saude', 'life_sim', 'profile', 'mobility', 'debts'].includes(currentScreen);
 
   return (
     <div className="min-h-screen bg-[#050A10] text-slate-200 font-sans selection:bg-cyan-500/30">
