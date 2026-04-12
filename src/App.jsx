@@ -7,7 +7,9 @@ import Transactions from './screens/Transactions';
 import Markets from './screens/Markets';
 import Goals from './screens/Goals';
 import FinancialHealth from './screens/FinancialHealth';
-import { Home, Lightbulb, Briefcase, Search, ListTodo, Target } from 'lucide-react';
+import AIChat from './screens/AIChat';
+import Profile from './screens/Profile';
+import { Home, Lightbulb, Briefcase, Search, ListTodo, Target, MessageSquare, UserCircle } from 'lucide-react';
 
 const NavButton = ({ icon: Icon, label, active, onClick }) => (
   <button
@@ -35,6 +37,11 @@ export default function App() {
       case 'simular':
       case 'purchase_decision':
         return <PurchaseDecision onBack={() => setCurrentScreen('dashboard')} />;
+      case 'chat':
+      case 'concierge':
+        return <AIChat />;
+      case 'profile':
+        return <Profile />;
       case 'wallet':
       case 'carteira':
         return <Wallet onNavigate={setCurrentScreen} />;
@@ -88,16 +95,22 @@ export default function App() {
             onClick={() => setCurrentScreen('goals')}
           />
           <NavButton
+            icon={MessageSquare}
+            label="Chat"
+            active={currentScreen === 'chat' || currentScreen === 'concierge'}
+            onClick={() => setCurrentScreen('chat')}
+          />
+          <NavButton
             icon={Lightbulb}
             label="Insights"
             active={currentScreen === 'insights'}
             onClick={() => setCurrentScreen('insights')}
           />
           <NavButton
-            icon={Search}
-            label="Simular"
-            active={currentScreen === 'simular' || currentScreen === 'purchase_decision'}
-            onClick={() => setCurrentScreen('simular')}
+            icon={UserCircle}
+            label="Perfil"
+            active={currentScreen === 'profile'}
+            onClick={() => setCurrentScreen('profile')}
           />
         </nav>
       </div>

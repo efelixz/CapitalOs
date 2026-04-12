@@ -23,7 +23,10 @@ export default function Dashboard({ onNavigate }) {
       {/* Header */}
       <header className="flex items-center justify-between mb-10">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/10 shadow-inner">
+          <div
+            onClick={() => onNavigate('profile')}
+            className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/10 shadow-inner cursor-pointer hover:border-primary/50 transition-colors"
+          >
             <img src="https://i.pravatar.cc/150?u=capitalos" alt="User" className="w-full h-full object-cover" />
           </div>
           <div>
