@@ -41,7 +41,7 @@ const InsightCard = ({ type, title, description, impact, actionLabel, icon: Icon
   );
 };
 
-export function Insights() {
+export default function Insights() {
   const categories = ['Todos', 'Gastos', 'Dívidas', 'Oportunidades'];
   const [activeTab, setActiveTab] = React.useState('Todos');
 

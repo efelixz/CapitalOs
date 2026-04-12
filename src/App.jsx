@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import Dashboard from './screens/Dashboard';
 import PurchaseDecision from './screens/PurchaseDecision';
 import Wallet from './screens/Wallet';
-import { Insights } from './screens/Insights';
-import { Home, Lightbulb, Briefcase, Search } from 'lucide-react';
+import Insights from './screens/Insights';
+import Transactions from './screens/Transactions';
+import { Home, Lightbulb, Briefcase, Search, ListTodo } from 'lucide-react';
 
 const NavButton = ({ icon: Icon, label, active, onClick }) => (
   <button
@@ -27,9 +28,12 @@ export default function App() {
         return <PurchaseDecision onBack={() => setCurrentScreen('dashboard')} />;
       case 'wallet':
       case 'carteira':
-        return <Wallet onBack={() => setCurrentScreen('dashboard')} />;
+        return <Wallet onNavigate={setCurrentScreen} />;
       case 'insights':
         return <Insights />;
+      case 'transactions':
+      case 'transacoes':
+        return <Transactions />;
       default:
         return <Dashboard onNavigate={setCurrentScreen} />;
     }
@@ -41,7 +45,7 @@ export default function App() {
         {renderScreen()}
 
         {/* Persistent Bottom Nav */}
-        <div className="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-slate-950/80 backdrop-blur-xl border-t border-white/5 p-4 flex justify-between items-center px-8 pb-8 z-50 rounded-t-[32px]">
+        <div className="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-slate-950/80 backdrop-blur-xl border-t border-white/5 p-4 flex justify-between items-center px-6 pb-8 z-50 rounded-t-[32px]">
           <NavButton
             icon={Home}
             label="Início"
@@ -53,6 +57,12 @@ export default function App() {
             label="Carteira"
             active={currentScreen === 'carteira' || currentScreen === 'wallet'}
             onClick={() => setCurrentScreen('wallet')}
+          />
+          <NavButton
+            icon={ListTodo}
+            label="Transações"
+            active={currentScreen === 'transactions' || currentScreen === 'transacoes'}
+            onClick={() => setCurrentScreen('transactions')}
           />
           <NavButton
             icon={Lightbulb}

@@ -133,8 +133,8 @@ export default function Dashboard({ onNavigate }) {
       {/* Quick Actions */}
       <div className="flex justify-between mb-10 px-1">
         <IconButton icon={TrendingUp} label="Simular" onClick={() => onNavigate('purchase_decision')} />
-        <IconButton icon={Building2} label="Investir" />
-        <IconButton icon={Brain} label="Analisar" />
+        <IconButton icon={Building2} label="Investir" onClick={() => onNavigate('wallet')} />
+        <IconButton icon={Brain} label="Analisar" onClick={() => onNavigate('insights')} />
       </div>
 
       {/* Insight Card */}
