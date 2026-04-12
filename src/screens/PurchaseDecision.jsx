@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowLeft, CheckCircle2, AlertTriangle, TrendingDown, Wallet, Target, Info, ChevronRight, ShoppingBag } from 'lucide-react';
-import { Card } from './components/Card';
-import { IconButton } from './components/IconButton';
+import { Card } from '../components/Card';
+import { IconButton } from '../components/IconButton';
 
 const PurchaseDecision = ({ onBack }) => {
   return (

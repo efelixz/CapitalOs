@@ -14,8 +14,8 @@ import {
   Briefcase,
   Search
 } from 'lucide-react';
-import { Card, cn } from './components/Card';
-import { IconButton } from './components/IconButton';
+import { Card, cn } from '../components/Card';
+import { IconButton } from '../components/IconButton';
 
 export default function Dashboard({ onNavigate }) {
   return (
@@ -247,36 +247,6 @@ export default function Dashboard({ onNavigate }) {
         </Card>
       </section>
 
-      {/* Bottom Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-background/80 backdrop-blur-2xl border-t border-white/5 px-8 py-6 flex justify-between items-center z-50 rounded-t-[40px] shadow-2xl">
-        <div className="flex flex-col items-center gap-1.5 text-accent cursor-pointer group">
-          <div className="p-1 rounded-lg group-hover:bg-accent/10 transition-colors">
-            <Home size={26} />
-          </div>
-          <span className="text-[10px] font-black tracking-widest">INÍCIO</span>
-        </div>
-        <div className="flex flex-col items-center gap-1.5 text-muted cursor-pointer group">
-          <div className="p-1 rounded-lg group-hover:bg-white/10 transition-colors">
-            <Lightbulb size={26} />
-          </div>
-          <span className="text-[10px] font-black tracking-widest opacity-60">INSIGHTS</span>
-        </div>
-        <div className="flex flex-col items-center gap-1.5 text-muted cursor-pointer group">
-          <div className="p-1 rounded-lg group-hover:bg-white/10 transition-colors">
-            <Briefcase size={26} />
-          </div>
-          <span className="text-[10px] font-black tracking-widest opacity-60">CARTEIRA</span>
-        </div>
-        <div
-          className="flex flex-col items-center gap-1.5 text-muted cursor-pointer group"
-          onClick={() => onNavigate('purchase_decision')}
-        >
-          <div className="p-1 rounded-lg group-hover:bg-white/10 transition-colors">
-            <Search size={26} />
-          </div>
-          <span className="text-[10px] font-black tracking-widest opacity-60">SIMULAR</span>
-        </div>
-      </nav>
     </div>
   );
 }
