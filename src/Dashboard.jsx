@@ -17,7 +17,7 @@ import {
 import { Card, cn } from './components/Card';
 import { IconButton } from './components/IconButton';
 
-export default function Dashboard() {
+export default function Dashboard({ onNavigate }) {
   return (
     <div className="max-w-md mx-auto min-h-screen pb-40 pt-10 px-6 bg-background text-white font-sans">
       {/* Header */}
@@ -40,54 +40,99 @@ export default function Dashboard() {
         </button>
       </header>
 
-      {/* Main Net Worth Card */}
-      <Card variant="premium" className="mb-10 relative overflow-hidden shadow-premium group cursor-pointer hover:scale-[1.01] active:scale-[0.99] transition-all duration-500">
-        <div className="relative z-10">
-          <p className="text-[12px] text-muted uppercase tracking-[0.3em] font-bold mb-3 opacity-80">Patrimônio Líquido</p>
-          <div className="flex items-baseline gap-1.5 mb-8">
-            <span className="text-primary text-2xl font-black">R$</span>
-            <h2 className="text-5xl font-black tracking-tighter text-white">2.480.150,<span className="text-3xl font-bold opacity-60">00</span></h2>
-          </div>
-
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-5">
-              <div className="bg-accent/15 border border-accent/30 px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm">
-                <TrendingUp size={14} className="text-accent" />
-                <span className="text-accent text-[14px] font-black">+1.2%</span>
-              </div>
-              <p className="text-[11px] text-muted font-medium leading-tight">nas últimas<br/><span className="text-white/40">24 horas</span></p>
+      {/* CapitalOS Score & Net Worth Summary */}
+      <div className="grid grid-cols-5 gap-4 mb-10">
+        <Card variant="premium" className="col-span-3 relative overflow-hidden shadow-premium p-6 flex flex-col justify-between min-h-[180px]">
+          <div className="relative z-10">
+            <p className="text-[10px] text-muted uppercase tracking-[0.2em] font-bold mb-2 opacity-80">Patrimônio Líquido</p>
+            <div className="flex items-baseline gap-1 mb-4">
+              <span className="text-primary text-lg font-black">R$</span>
+              <h2 className="text-3xl font-black tracking-tighter text-white line-clamp-1">2.480.150</h2>
             </div>
-
-            <svg width="100" height="40" viewBox="0 0 100 40" fill="none" className="opacity-90">
-              <path d="M0 35C15 35 20 5 35 15C50 25 60 40 75 20C85 5 95 15 100 10" stroke="#10b981" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <div className="flex items-center gap-2">
+              <div className="bg-accent/15 border border-accent/30 px-2 py-0.5 rounded-full flex items-center gap-1">
+                <TrendingUp size={10} className="text-accent" />
+                <span className="text-accent text-[10px] font-black">+1.2%</span>
+              </div>
+            </div>
           </div>
+          <div className="mt-4 relative z-10">
+             <svg width="100%" height="30" viewBox="0 0 100 30" preserveAspectRatio="none" className="opacity-60">
+                <path d="M0 25C15 25 20 5 35 15C50 25 60 30 75 10C85 5 95 15 100 8" stroke="#00f2ff" strokeWidth="2" fill="none" />
+             </svg>
+          </div>
+          <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-[60px] rounded-full -mr-16 -mt-16"></div>
+        </Card>
+
+        <Card className="col-span-2 bg-slate-900/40 border-white/5 flex flex-col items-center justify-center text-center p-4">
+          <p className="text-[9px] text-muted uppercase tracking-widest font-bold mb-3">Health Score</p>
+          <div className="relative w-20 h-20 flex items-center justify-center">
+            <svg className="w-full h-full -rotate-90">
+              <circle cx="40" cy="40" r="34" fill="none" stroke="currentColor" strokeWidth="6" className="text-white/5" />
+              <circle cx="40" cy="40" r="34" fill="none" stroke="currentColor" strokeWidth="6" strokeDasharray={213.6} strokeDashoffset={213.6 * (1 - 0.82)} className="text-primary" strokeLinecap="round" />
+            </svg>
+            <span className="absolute text-xl font-black tracking-tighter">82</span>
+          </div>
+          <p className="text-[10px] text-accent font-black mt-2 uppercase">Excelente</p>
+        </Card>
+      </div>
+
+      {/* Decision Indicators Row */}
+      <div className="grid grid-cols-3 gap-3 mb-10">
+        <div className="bg-white/5 rounded-2xl p-3 border border-white/5 text-center">
+          <p className="text-[8px] text-muted uppercase font-black mb-1">Risco</p>
+          <p className="text-xs font-black text-emerald-400 uppercase">Baixo</p>
         </div>
-        <div className="absolute top-0 right-0 w-48 h-48 bg-primary/10 blur-[80px] rounded-full -mr-24 -mt-24 group-hover:bg-primary/20 transition-colors duration-700"></div>
-      </Card>
+        <div className="bg-white/5 rounded-2xl p-3 border border-white/5 text-center">
+          <p className="text-[8px] text-muted uppercase font-black mb-1">Liquidez</p>
+          <p className="text-xs font-black text-emerald-400 uppercase">Alta</p>
+        </div>
+        <div className="bg-white/5 rounded-2xl p-3 border border-white/5 text-center">
+          <p className="text-[8px] text-muted uppercase font-black mb-1">Exposição</p>
+          <p className="text-xs font-black text-gold uppercase">15% USD</p>
+        </div>
+      </div>
 
       {/* Currency Monitor */}
       <div className="flex gap-3 mb-10 overflow-x-auto no-scrollbar py-2">
-        <div className="bg-white/5 backdrop-blur-md border border-white/5 rounded-2xl px-4 py-2 flex items-center gap-3 min-w-max">
-          <span className="text-xs font-bold text-muted uppercase tracking-tighter">USD</span>
-          <span className="text-sm font-black text-white">R$ 4,92</span>
-          <span className="text-[10px] font-bold text-accent">-0.2%</span>
+        <div className="bg-white/5 backdrop-blur-md border border-white/5 rounded-2xl px-4 py-2 flex flex-col gap-1 min-w-max">
+          <div className="flex items-center gap-3">
+            <span className="text-xs font-bold text-muted uppercase tracking-tighter">USD</span>
+            <span className="text-sm font-black text-white">R$ 4,92</span>
+            <span className="text-[10px] font-bold text-accent">-0.2%</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-[8px] font-bold text-muted">COMPRA:</span>
+            <span className="text-[8px] font-black text-emerald-400">SCORE 92</span>
+          </div>
         </div>
-        <div className="bg-white/5 backdrop-blur-md border border-white/5 rounded-2xl px-4 py-2 flex items-center gap-3 min-w-max">
-          <span className="text-xs font-bold text-muted uppercase tracking-tighter">EUR</span>
-          <span className="text-sm font-black text-white">R$ 5,34</span>
-          <span className="text-[10px] font-bold text-accent">-0.1%</span>
+        <div className="bg-white/5 backdrop-blur-md border border-white/5 rounded-2xl px-4 py-2 flex flex-col gap-1 min-w-max">
+          <div className="flex items-center gap-3">
+            <span className="text-xs font-bold text-muted uppercase tracking-tighter">EUR</span>
+            <span className="text-sm font-black text-white">R$ 5,34</span>
+            <span className="text-[10px] font-bold text-accent">-0.1%</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-[8px] font-bold text-muted">COMPRA:</span>
+            <span className="text-[8px] font-black text-gold">SCORE 75</span>
+          </div>
         </div>
-        <div className="bg-white/5 backdrop-blur-md border border-white/5 rounded-2xl px-4 py-2 flex items-center gap-3 min-w-max">
-          <span className="text-xs font-bold text-muted uppercase tracking-tighter">BTC</span>
-          <span className="text-sm font-black text-white">R$ 312k</span>
-          <span className="text-[10px] font-bold text-accent">+2.4%</span>
+        <div className="bg-white/5 backdrop-blur-md border border-white/5 rounded-2xl px-4 py-2 flex flex-col gap-1 min-w-max">
+          <div className="flex items-center gap-3">
+            <span className="text-xs font-bold text-muted uppercase tracking-tighter">BTC</span>
+            <span className="text-sm font-black text-white">R$ 312k</span>
+            <span className="text-[10px] font-bold text-accent">+2.4%</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-[8px] font-bold text-muted">HOLD:</span>
+            <span className="text-[8px] font-black text-muted">SCORE 40</span>
+          </div>
         </div>
       </div>
 
       {/* Quick Actions */}
       <div className="flex justify-between mb-10 px-1">
-        <IconButton icon={TrendingUp} label="Simular" />
+        <IconButton icon={TrendingUp} label="Simular" onClick={() => onNavigate('purchase_decision')} />
         <IconButton icon={Building2} label="Investir" />
         <IconButton icon={Brain} label="Analisar" />
       </div>
@@ -222,7 +267,10 @@ export default function Dashboard() {
           </div>
           <span className="text-[10px] font-black tracking-widest opacity-60">CARTEIRA</span>
         </div>
-        <div className="flex flex-col items-center gap-1.5 text-muted cursor-pointer group">
+        <div
+          className="flex flex-col items-center gap-1.5 text-muted cursor-pointer group"
+          onClick={() => onNavigate('purchase_decision')}
+        >
           <div className="p-1 rounded-lg group-hover:bg-white/10 transition-colors">
             <Search size={26} />
           </div>
