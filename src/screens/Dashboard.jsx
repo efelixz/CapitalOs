@@ -95,7 +95,10 @@ export default function Dashboard({ onNavigate }) {
 
       {/* Currency Monitor */}
       <div className="flex gap-3 mb-10 overflow-x-auto no-scrollbar py-2">
-        <div className="bg-white/5 backdrop-blur-md border border-white/5 rounded-2xl px-4 py-2 flex flex-col gap-1 min-w-max">
+        <div
+          onClick={() => onNavigate('markets')}
+          className="bg-white/5 backdrop-blur-md border border-white/5 rounded-2xl px-4 py-2 flex flex-col gap-1 min-w-max cursor-pointer active:scale-95 transition-transform"
+        >
           <div className="flex items-center gap-3">
             <span className="text-xs font-bold text-muted uppercase tracking-tighter">USD</span>
             <span className="text-sm font-black text-white">R$ 4,92</span>
@@ -106,7 +109,10 @@ export default function Dashboard({ onNavigate }) {
             <span className="text-[8px] font-black text-emerald-400">SCORE 92</span>
           </div>
         </div>
-        <div className="bg-white/5 backdrop-blur-md border border-white/5 rounded-2xl px-4 py-2 flex flex-col gap-1 min-w-max">
+        <div
+          onClick={() => onNavigate('markets')}
+          className="bg-white/5 backdrop-blur-md border border-white/5 rounded-2xl px-4 py-2 flex flex-col gap-1 min-w-max cursor-pointer active:scale-95 transition-transform"
+        >
           <div className="flex items-center gap-3">
             <span className="text-xs font-bold text-muted uppercase tracking-tighter">EUR</span>
             <span className="text-sm font-black text-white">R$ 5,34</span>
@@ -117,7 +123,10 @@ export default function Dashboard({ onNavigate }) {
             <span className="text-[8px] font-black text-gold">SCORE 75</span>
           </div>
         </div>
-        <div className="bg-white/5 backdrop-blur-md border border-white/5 rounded-2xl px-4 py-2 flex flex-col gap-1 min-w-max">
+        <div
+          onClick={() => onNavigate('markets')}
+          className="bg-white/5 backdrop-blur-md border border-white/5 rounded-2xl px-4 py-2 flex flex-col gap-1 min-w-max cursor-pointer active:scale-95 transition-transform"
+        >
           <div className="flex items-center gap-3">
             <span className="text-xs font-bold text-muted uppercase tracking-tighter">BTC</span>
             <span className="text-sm font-black text-white">R$ 312k</span>

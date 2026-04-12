@@ -4,6 +4,7 @@ import PurchaseDecision from './screens/PurchaseDecision';
 import Wallet from './screens/Wallet';
 import Insights from './screens/Insights';
 import Transactions from './screens/Transactions';
+import Markets from './screens/Markets';
 import { Home, Lightbulb, Briefcase, Search, ListTodo } from 'lucide-react';
 
 const NavButton = ({ icon: Icon, label, active, onClick }) => (
@@ -34,18 +35,27 @@ export default function App() {
       case 'transactions':
       case 'transacoes':
         return <Transactions />;
+      case 'markets':
+      case 'mercados':
+        return <Markets onBack={() => setCurrentScreen('dashboard')} />;
       default:
         return <Dashboard onNavigate={setCurrentScreen} />;
     }
   };
 
+  // Hide nav for detail-heavy simulator or specific full-screen flows if needed
+  // For now, simulator and markets feel like sub-flows that should keep nav or show a back button
+  const showNav = !['simular', 'purchase_decision', 'markets', 'mercados'].includes(currentScreen);
+
   return (
     <div className="min-h-screen bg-[#050A10] text-slate-200 font-sans selection:bg-cyan-500/30">
       <div className="max-w-md mx-auto min-h-screen bg-[#050A10] p-6 pb-32 relative overflow-hidden">
-        {renderScreen()}
+        <main>
+          {renderScreen()}
+        </main>
 
         {/* Persistent Bottom Nav */}
-        <div className="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-slate-950/80 backdrop-blur-xl border-t border-white/5 p-4 flex justify-between items-center px-6 pb-8 z-50 rounded-t-[32px]">
+        <nav className={`fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-slate-950/80 backdrop-blur-xl border-t border-white/5 p-4 flex justify-between items-center px-6 pb-8 z-50 rounded-t-[32px] transition-transform duration-300 ${showNav ? 'translate-y-0' : 'translate-y-full'}`}>
           <NavButton
             icon={Home}
             label="Início"
@@ -76,7 +86,7 @@ export default function App() {
             active={currentScreen === 'simular' || currentScreen === 'purchase_decision'}
             onClick={() => setCurrentScreen('simular')}
           />
-        </div>
+        </nav>
       </div>
     </div>
   );
