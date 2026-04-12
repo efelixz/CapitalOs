@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  User,
+  ArrowLeft,
   Settings,
   Shield,
   CreditCard,
@@ -33,10 +33,19 @@ const ProfileMenuItem = ({ icon: Icon, label, value, colorClass, danger }) => (
   </button>
 );
 
-export default function Profile() {
+export default function Profile({ onBack }) {
   return (
-    <div className="flex flex-col gap-8 pb-24">
-      <header className="px-1 text-center">
+    <div className="flex flex-col gap-8 pt-4">
+      <header className="flex flex-col items-center">
+        <div className="w-full flex justify-start mb-6">
+           <button
+            onClick={onBack}
+            className="p-2 -ml-2 text-slate-400 hover:text-white transition-colors flex items-center gap-2"
+          >
+            <ArrowLeft size={20} />
+            <span className="text-xs font-bold uppercase tracking-widest">Voltar</span>
+          </button>
+        </div>
         <div className="relative inline-block mb-4">
           <div className="w-24 h-24 rounded-[32px] overflow-hidden border-4 border-slate-900 shadow-2xl">
             <img src="https://i.pravatar.cc/150?u=capitalos" alt="User" className="w-full h-full object-cover" />
@@ -82,34 +91,10 @@ export default function Profile() {
             value="Ativadas"
             colorClass="text-emerald-400"
           />
-          <ProfileMenuItem
-            icon={Lock}
-            label="Compartilhamento de Dados"
-            value="Somente Local"
-            colorClass="text-indigo-400"
-          />
         </Card>
       </section>
 
-      <section>
-        <h3 className="text-[11px] font-black text-slate-500 uppercase tracking-[0.2em] mb-4 px-1">Conta & Segurança</h3>
-        <Card className="px-5">
-          <ProfileMenuItem icon={User} label="Dados Pessoais" />
-          <ProfileMenuItem icon={Shield} label="Segurança & Biometria" />
-          <ProfileMenuItem icon={CreditCard} label="Métodos de Pagamento" />
-          <ProfileMenuItem icon={Bell} label="Preferências de Alerta" />
-        </Card>
-      </section>
-
-      <section>
-        <h3 className="text-[11px] font-black text-slate-500 uppercase tracking-[0.2em] mb-4 px-1">Suporte</h3>
-        <Card className="px-5">
-          <ProfileMenuItem icon={HelpCircle} label="Central de Ajuda" />
-          <ProfileMenuItem icon={LogOut} label="Sair da Conta" danger />
-        </Card>
-      </section>
-
-      <div className="text-center px-1">
+      <div className="text-center pb-10">
         <p className="text-[10px] text-slate-700 uppercase font-black tracking-widest">CapitalOS AI v4.2.0 • Build 8421</p>
       </div>
     </div>

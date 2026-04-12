@@ -1,9 +1,7 @@
 import React from 'react';
 import {
   Target,
-  Flag,
   TrendingUp,
-  Calendar,
   Sparkles,
   ChevronRight,
   ShieldCheck,
@@ -57,9 +55,9 @@ const GoalCard = ({ title, current, target, deadline, icon: Icon, colorClass, pr
   );
 };
 
-export default function Goals() {
+export default function Goals({ onNavigate }) {
   return (
-    <div className="flex flex-col gap-6 pb-24">
+    <div className="flex flex-col gap-6 pt-4">
       <header className="px-1">
         <h1 className="text-3xl font-bold text-white mb-2">Metas</h1>
         <p className="text-slate-400 text-sm uppercase tracking-widest font-medium">
@@ -68,20 +66,28 @@ export default function Goals() {
       </header>
 
       {/* Overview Projection */}
-      <Card variant="premium" className="bg-gradient-to-br from-indigo-900/40 to-slate-900/40 border-indigo-500/30">
-        <div className="flex items-center gap-3 mb-4">
-          <div className="w-10 h-10 rounded-xl bg-indigo-500/20 flex items-center justify-center border border-indigo-500/30">
-            <Target className="text-indigo-400" size={20} />
+      <button
+        onClick={() => onNavigate('life_sim')}
+        className="w-full text-left"
+      >
+        <Card
+          variant="premium"
+          className="bg-gradient-to-br from-indigo-900/40 to-slate-900/40 border-indigo-500/30 cursor-pointer active:scale-[0.98] transition-all"
+        >
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 rounded-xl bg-indigo-500/20 flex items-center justify-center border border-indigo-500/30">
+              <Target className="text-indigo-400" size={20} />
+            </div>
+            <div>
+              <p className="text-white font-bold text-sm">Previsão de Independência</p>
+              <p className="text-[10px] text-indigo-400 font-black uppercase tracking-widest">Score de Consistência: 94%</p>
+            </div>
           </div>
-          <div>
-            <p className="text-white font-bold text-sm">Previsão de Independência</p>
-            <p className="text-[10px] text-indigo-400 font-black uppercase tracking-widest">Score de Consistência: 94%</p>
-          </div>
-        </div>
-        <p className="text-xs text-slate-300 leading-relaxed">
-          Mantendo o ritmo atual de aportes e rentabilidade, você atingirá sua liberdade financeira em <span className="text-white font-bold">9 anos e 4 meses</span>.
-        </p>
-      </Card>
+          <p className="text-xs text-slate-300 leading-relaxed">
+            Mantendo o ritmo atual, você atingirá sua liberdade financeira em <span className="text-white font-bold">9 anos e 4 meses</span>.
+          </p>
+        </Card>
+      </button>
 
       <div className="space-y-2">
         <GoalCard
@@ -101,35 +107,9 @@ export default function Goals() {
           deadline="Alvo: Dezembro 2034"
           icon={Palmtree}
           colorClass="bg-cyan-500"
-          projection="Renda passiva estimada: R$ 25k/mês"
-        />
-
-        <GoalCard
-          title="Upgrade Residencial"
-          current={120000}
-          target={450000}
-          deadline="Meta: Entrada Casa Nova"
-          icon={Home}
-          colorClass="bg-gold"
-          projection="Aporte mensal sugerido: +R$ 1.200"
+          projection="Renda estimada: R$ 25k/mês"
         />
       </div>
-
-      <section>
-        <h3 className="text-[11px] font-black text-slate-500 uppercase tracking-[0.2em] mb-4 px-1">Análise de IA</h3>
-        <Card className="bg-slate-900/30 border-white/5 p-5">
-          <div className="flex gap-4">
-             <div className="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center flex-shrink-0">
-               <TrendingUp className="text-cyan-400" size={20} />
-             </div>
-             <div>
-               <p className="text-sm text-slate-300 leading-relaxed">
-                 Sua taxa de poupança subiu <span className="text-emerald-400 font-bold">15%</span> este mês. Se mantiver esse excedente focado na 'Reserva de Emergência', você economizará <span className="text-white font-bold">R$ 1.200</span> em juros potenciais no futuro.
-               </p>
-             </div>
-          </div>
-        </Card>
-      </section>
     </div>
   );
 }

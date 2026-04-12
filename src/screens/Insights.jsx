@@ -3,8 +3,6 @@ import { Card } from '../components/Card';
 import {
   Sparkles,
   TrendingDown,
-  AlertTriangle,
-  Target,
   ArrowRight,
   ShieldCheck,
   CreditCard,
@@ -46,7 +44,7 @@ export default function Insights() {
   const [activeTab, setActiveTab] = React.useState('Todos');
 
   return (
-    <div className="flex flex-col gap-6 pb-24">
+    <div className="flex flex-col gap-6 pt-4">
       <header className="px-1">
         <h1 className="text-3xl font-bold text-white mb-2">Insights AI</h1>
         <p className="text-slate-400 text-sm uppercase tracking-widest font-medium">
@@ -76,8 +74,8 @@ export default function Insights() {
           type="Dívidas"
           impact="+ R$ 4.2k/ano"
           title="Consolidação de Juros"
-          description="Identificamos que você está pagando 12.5% a.m. no cartão de crédito 'Premium'. Migrar essa dívida para um crédito consignado reduzirá o custo para 2.1% a.m."
-          actionLabel="Ver Proposta de Troca"
+          description="Identificamos que você está pagando 12.5% a.m. no cartão de crédito 'Premium'. Migrar essa dívida reduzirá o custo para 2.1% a.m."
+          actionLabel="Ver Proposta"
           icon={TrendingDown}
           colorClass="bg-red-500"
         />
@@ -86,30 +84,20 @@ export default function Insights() {
           type="Oportunidade"
           impact="Eficiência Fiscal"
           title="Aporte em PGBL"
-          description="Você atingiu a base de cálculo máxima do IR. Um aporte de R$ 12.000 em PGBL até 31/12 pode gerar uma restituição de R$ 3.300 no próximo ano."
+          description="Um aporte de R$ 12.000 em PGBL até 31/12 pode gerar uma restituição de R$ 3.300 no próximo ano."
           actionLabel="Simular Benefício"
           icon={Zap}
-          colorClass="bg-gold-500"
+          colorClass="bg-gold"
         />
 
         <InsightCard
           type="Gastos"
           impact="Economia Direta"
           title="Assinaturas Fantasmas"
-          description="Detectamos 3 serviços de streaming com conteúdo duplicado nos últimos 60 dias. Cancelar o 'StreamMax' economiza R$ 54,90/mês sem perda de catálogo."
-          actionLabel="Revisar Assinaturas"
+          description="Detectamos 3 serviços de streaming com conteúdo duplicado. Cancelar o 'StreamMax' economiza R$ 54,90/mês."
+          actionLabel="Revisar"
           icon={CreditCard}
           colorClass="bg-cyan-500"
-        />
-
-        <InsightCard
-          type="Segurança"
-          impact="Proteção"
-          title="Reserva de Emergência"
-          description="Com o aumento da sua inflação pessoal (gastos fixos), sua reserva atual cobre apenas 4 meses. O ideal para seu perfil é atingir 6 meses (+R$ 15.000)."
-          actionLabel="Ajustar Meta"
-          icon={ShieldCheck}
-          colorClass="bg-emerald-500"
         />
       </div>
     </div>

@@ -21,9 +21,9 @@ const Wallet = ({ onNavigate }) => {
   ];
 
   return (
-    <div className="max-w-md mx-auto min-h-screen pb-40 pt-10 px-6 bg-[#050A10] text-white">
+    <div className="flex flex-col gap-8 pt-4">
       {/* Header */}
-      <div className="flex justify-between items-center mb-10">
+      <div className="flex justify-between items-center">
         <div>
           <h1 className="text-2xl font-black tracking-tight">Minha Carteira</h1>
           <p className="text-xs text-muted uppercase tracking-widest font-bold mt-1">Patrimônio Estratégico</p>
@@ -33,12 +33,10 @@ const Wallet = ({ onNavigate }) => {
         </div>
       </div>
 
-      {/* Allocation Chart (Donut simplified) */}
-      <Card className="mb-8 relative overflow-hidden flex flex-col items-center py-8">
+      {/* Allocation Chart */}
+      <Card className="relative overflow-hidden flex flex-col items-center py-8">
         <div className="relative w-48 h-48 flex items-center justify-center">
           <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
-            {/* Simple stacked bar represented as concentric or split rings would be complex in SVG here,
-                let's use a cleaner visual representation for the "Premium" feel */}
             <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="8" className="text-white/5" />
             <circle cx="50" cy="50" r="40" fill="none" stroke="#00f2ff" strokeWidth="8" strokeDasharray="251.2" strokeDashoffset={251.2 * (1 - 0.45)} strokeLinecap="round" />
             <circle cx="50" cy="50" r="30" fill="none" stroke="#10b981" strokeWidth="6" strokeDasharray="188.4" strokeDashoffset={188.4 * (1 - 0.25)} strokeLinecap="round" />
@@ -51,29 +49,31 @@ const Wallet = ({ onNavigate }) => {
       </Card>
 
       {/* Asset List */}
-      <h2 className="text-sm font-black uppercase tracking-widest text-muted mb-4">Alocação por Classe</h2>
-      <div className="space-y-3 mb-10">
-        {assets.map((asset) => (
-          <div key={asset.name} className="bg-white/5 border border-white/5 rounded-2xl p-4 flex items-center justify-between group hover:bg-white/10 transition-colors">
-            <div className="flex items-center gap-4">
-              <div className={cn("w-1.5 h-10 rounded-full", asset.color)}></div>
-              <div>
-                <p className="text-sm font-bold text-white">{asset.name}</p>
-                <p className="text-xs text-muted font-medium">{asset.percent}% da carteira</p>
+      <div>
+        <h2 className="text-sm font-black uppercase tracking-widest text-muted mb-4">Alocação por Classe</h2>
+        <div className="space-y-3">
+          {assets.map((asset) => (
+            <div key={asset.name} className="bg-white/5 border border-white/5 rounded-2xl p-4 flex items-center justify-between group hover:bg-white/10 transition-colors">
+              <div className="flex items-center gap-4">
+                <div className={cn("w-1.5 h-10 rounded-full", asset.color)}></div>
+                <div>
+                  <p className="text-sm font-bold text-white">{asset.name}</p>
+                  <p className="text-xs text-muted font-medium">{asset.percent}% da carteira</p>
+                </div>
+              </div>
+              <div className="text-right">
+                <p className="text-sm font-black text-white">{asset.value}</p>
+                <p className={cn("text-[10px] font-bold", asset.change.startsWith('+') ? "text-emerald-400" : "text-red-400")}>
+                  {asset.change}
+                </p>
               </div>
             </div>
-            <div className="text-right">
-              <p className="text-sm font-black text-white">{asset.value}</p>
-              <p className={cn("text-[10px] font-bold", asset.change.startsWith('+') ? "text-emerald-400" : "text-red-400")}>
-                {asset.change}
-              </p>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       {/* AI Recommendation */}
-      <Card variant="premium" className="mb-10 relative overflow-hidden group">
+      <Card variant="premium" className="relative overflow-hidden group">
         <div className="relative z-10">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center border border-white/20">
@@ -92,22 +92,7 @@ const Wallet = ({ onNavigate }) => {
             EXECUTAR AJUSTE <ArrowUpRight size={18} />
           </button>
         </div>
-        <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 blur-[60px] rounded-full -mr-16 -mt-16 group-hover:bg-primary/30 transition-all"></div>
       </Card>
-
-      {/* Risk Metrics */}
-      <div className="grid grid-cols-2 gap-4 mb-10">
-        <div className="bg-[#0A121C] border border-slate-800 p-5 rounded-3xl">
-          <ShieldCheck className="text-emerald-400 mb-3" size={24} />
-          <p className="text-[10px] text-muted uppercase font-black">Risco Total</p>
-          <p className="text-lg font-black text-white">Conservador +</p>
-        </div>
-        <div className="bg-[#0A121C] border border-slate-800 p-5 rounded-3xl">
-          <Globe className="text-indigo-400 mb-3" size={24} />
-          <p className="text-[10px] text-muted uppercase font-black">Globalização</p>
-          <p className="text-lg font-black text-white">15% Offshore</p>
-        </div>
-      </div>
     </div>
   );
 };
