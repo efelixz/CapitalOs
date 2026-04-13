@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   ArrowLeft,
-  Settings,
+  Settings as SettingsIcon,
   Shield,
   CreditCard,
   Bell,
@@ -15,8 +15,8 @@ import {
 } from 'lucide-react';
 import { Card, cn } from '../components/Card';
 
-const ProfileMenuItem = ({ icon: Icon, label, value, colorClass, danger }) => (
-  <button className="w-full flex items-center justify-between py-4 group">
+const ProfileMenuItem = ({ icon: Icon, label, value, colorClass, danger, onClick }) => (
+  <button onClick={onClick} className="w-full flex items-center justify-between py-4 group">
     <div className="flex items-center gap-4">
       <div className={cn(
         "w-10 h-10 rounded-xl flex items-center justify-center border",
@@ -33,7 +33,7 @@ const ProfileMenuItem = ({ icon: Icon, label, value, colorClass, danger }) => (
   </button>
 );
 
-export default function Profile({ onBack }) {
+export default function Profile({ onBack, onNavigate }) {
   return (
     <div className="flex flex-col gap-8 pt-4">
       <header className="flex flex-col items-center">
@@ -79,6 +79,13 @@ export default function Profile({ onBack }) {
       <section>
         <h3 className="text-[11px] font-black text-slate-500 uppercase tracking-[0.2em] mb-4 px-1">Configurações AI</h3>
         <Card className="px-5">
+          <ProfileMenuItem
+            icon={SettingsIcon}
+            label="Preferências do App"
+            value="Privacidade & Conta"
+            colorClass="text-indigo-400"
+            onClick={() => onNavigate('settings')}
+          />
           <ProfileMenuItem
             icon={Brain}
             label="Personalidade da IA"

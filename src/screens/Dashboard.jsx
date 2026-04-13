@@ -161,6 +161,38 @@ export default function Dashboard({ onNavigate }) {
         </div>
       </Card>
 
+      {/* Priorities & Decisions - Added from PRD */}
+      <section>
+        <h3 className="text-[11px] font-black text-slate-500 uppercase tracking-[0.2em] mb-4 px-1">Painel de Decisões</h3>
+        <div className="space-y-4">
+          <Card className="bg-slate-900/40 border-l-4 border-cyan-500 py-5">
+            <div className="flex gap-4">
+              <div className="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center border border-cyan-500/20">
+                <Target size={20} className="text-cyan-400" />
+              </div>
+              <div className="flex-1">
+                <p className="text-[9px] text-cyan-400 font-black uppercase tracking-widest mb-1">Prioridade #1</p>
+                <h4 className="text-white font-bold text-sm mb-1">Aporte Dólar (Suporte R$ 4,92)</h4>
+                <p className="text-xs text-slate-400 leading-relaxed">Timing excelente para aumentar sua exposição offshore e reduzir risco Brasil.</p>
+              </div>
+            </div>
+          </Card>
+
+          <Card className="bg-slate-900/40 border-l-4 border-gold py-5">
+            <div className="flex gap-4">
+              <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center border border-gold/20">
+                <Brain size={20} className="text-gold" />
+              </div>
+              <div className="flex-1">
+                <p className="text-[9px] text-gold font-black uppercase tracking-widest mb-1">Sugestão CapitalOS</p>
+                <h4 className="text-white font-bold text-sm mb-1">Reequilibrar Carteira (Ações)</h4>
+                <p className="text-xs text-slate-400 leading-relaxed">Identificamos concentração acima do limite em PETR4. Rebalancear para FIIs.</p>
+              </div>
+            </div>
+          </Card>
+        </div>
+      </section>
+
       {/* Financial Status Cards */}
       <div className="grid grid-cols-1 gap-5">
         <Card className="flex flex-col gap-5 hover:bg-white/5 transition-colors group">

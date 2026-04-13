@@ -20,6 +20,9 @@ import Operations from './screens/Operations';
 import Reports from './screens/Reports';
 import Notifications from './screens/Notifications';
 import Integrations from './screens/Integrations';
+import Auth from './screens/Auth';
+import RiskProfile from './screens/RiskProfile';
+import Settings from './screens/Settings';
 import { Home, Lightbulb, Briefcase, Target, MessageSquare } from 'lucide-react';
 
 const NavButton = ({ icon: Icon, label, active, onClick }) => (
@@ -38,7 +41,14 @@ export default function App() {
   const renderScreen = () => {
     switch (currentScreen) {
       case 'onboarding':
-        return <Onboarding onComplete={() => setCurrentScreen('dashboard')} />;
+        return <Onboarding onComplete={() => setCurrentScreen('auth')} />;
+      case 'auth':
+        return <Auth onAuthSuccess={() => setCurrentScreen('risk_profile')} />;
+      case 'risk_profile':
+        return <RiskProfile onComplete={() => setCurrentScreen('dashboard')} />;
+      case 'settings':
+      case 'configuracoes':
+        return <Settings onBack={() => setCurrentScreen('profile')} />;
       case 'dashboard':
         return <Dashboard onNavigate={setCurrentScreen} />;
       case 'goals':
@@ -73,7 +83,7 @@ export default function App() {
       case 'concierge':
         return <AIChat />;
       case 'profile':
-        return <Profile onBack={() => setCurrentScreen('dashboard')} />;
+        return <Profile onBack={() => setCurrentScreen('dashboard')} onNavigate={setCurrentScreen} />;
       case 'simular':
       case 'purchase_decision':
         return <PurchaseDecision onBack={() => setCurrentScreen('dashboard')} />;
@@ -100,7 +110,7 @@ export default function App() {
   };
 
   // Hide nav for specific focus flows
-  const showNav = !['onboarding', 'purchase_decision', 'markets', 'mercados', 'health', 'saude', 'life_sim', 'profile', 'mobility', 'debts', 'credit', 'distribution', 'operations', 'reports', 'notifications', 'integrations'].includes(currentScreen);
+  const showNav = !['onboarding', 'auth', 'risk_profile', 'purchase_decision', 'markets', 'mercados', 'health', 'saude', 'life_sim', 'profile', 'mobility', 'debts', 'credit', 'distribution', 'operations', 'reports', 'notifications', 'integrations', 'settings'].includes(currentScreen);
 
   return (
     <div className="min-h-screen bg-[#050A10] text-slate-200 font-sans selection:bg-cyan-500/30">
