@@ -39,7 +39,7 @@ const InsightCard = ({ type, title, description, impact, actionLabel, icon: Icon
   );
 };
 
-export default function Insights() {
+export default function Insights({ onNavigate }) {
   const categories = ['Todos', 'Gastos', 'Dívidas', 'Oportunidades'];
   const [activeTab, setActiveTab] = React.useState('Todos');
 
