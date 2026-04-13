@@ -77,6 +77,21 @@ export default function Profile({ onBack, onNavigate }) {
       </Card>
 
       <section>
+        <h3 className="text-[11px] font-black text-slate-500 uppercase tracking-[0.2em] mb-4 px-1">Suporte & Conta</h3>
+        <Card className="px-5 mb-8">
+          <ProfileMenuItem
+            icon={HelpCircle}
+            label="Central de Ajuda"
+            onClick={() => onNavigate('help')}
+          />
+          <ProfileMenuItem
+            icon={LogOut}
+            label="Sair da Conta"
+            danger
+            onClick={() => onBack()}
+          />
+        </Card>
+
         <h3 className="text-[11px] font-black text-slate-500 uppercase tracking-[0.2em] mb-4 px-1">Configurações AI</h3>
         <Card className="px-5">
           <ProfileMenuItem

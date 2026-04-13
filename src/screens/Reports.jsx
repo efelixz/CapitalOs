@@ -31,7 +31,7 @@ const ReportItem = ({ title, period, size, type }) => (
   </div>
 );
 
-export default function Reports({ onBack }) {
+export default function Reports({ onBack, onNavigate }) {
   return (
     <div className="flex flex-col gap-6 pt-4">
       <header className="px-1">
@@ -88,7 +88,10 @@ export default function Reports({ onBack }) {
       </section>
 
       {/* Auto-Report Settings */}
-      <Card className="p-5 flex items-center justify-between">
+      <Card
+        onClick={() => onNavigate('journal')}
+        className="p-5 flex items-center justify-between cursor-pointer active:scale-[0.99] transition-all"
+      >
         <div className="flex items-center gap-4">
           <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 flex items-center justify-center border border-cyan-500/20">
             <Calendar className="text-cyan-400" size={24} />

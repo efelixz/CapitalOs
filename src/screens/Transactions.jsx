@@ -10,7 +10,8 @@ import {
   Home,
   Car,
   Zap,
-  LayoutGrid
+  LayoutGrid,
+  Plus
 } from 'lucide-react';
 import { Card } from '../components/Card';
 
@@ -38,7 +39,7 @@ const TransactionItem = ({ title, category, amount, date, type, icon: Icon, colo
   </div>
 );
 
-export default function Transactions({ onBack }) {
+export default function Transactions({ onBack, onNavigate }) {
   return (
     <div className="flex flex-col gap-6 pt-4">
       <header className="px-1 flex justify-between items-end">
@@ -56,6 +57,12 @@ export default function Transactions({ onBack }) {
           </p>
         </div>
         <div className="flex gap-2 mb-2">
+          <button
+            onClick={() => onNavigate('add_transaction')}
+            className="p-2.5 bg-cyan-500 rounded-xl text-black hover:bg-cyan-400 transition-colors shadow-lg"
+          >
+            <Plus size={20} />
+          </button>
           <button className="p-2.5 bg-slate-900 border border-white/5 rounded-xl text-slate-400 hover:text-white transition-colors">
             <Search size={20} />
           </button>

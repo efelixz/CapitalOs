@@ -84,7 +84,10 @@ export default function Operations({ onBack, onNavigate }) {
       {/* Trade Diary Mini */}
       <section>
         <h3 className="text-[11px] font-black text-slate-500 uppercase tracking-[0.2em] mb-4 px-1">Diário de Trades</h3>
-        <Card className="p-0 overflow-hidden">
+        <Card
+          onClick={() => onNavigate('journal')}
+          className="p-0 overflow-hidden cursor-pointer active:scale-[0.99] transition-all"
+        >
           <div className="p-4 bg-slate-900/30 border-b border-white/5 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <BookOpen size={18} className="text-indigo-400" />

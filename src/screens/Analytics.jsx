@@ -33,7 +33,7 @@ const CategoryStat = ({ icon: Icon, label, amount, percent, colorClass }) => (
   </div>
 );
 
-export default function Analytics() {
+export default function Analytics({ onNavigate }) {
   return (
     <div className="flex flex-col gap-6 pb-24">
       <header className="px-1">
@@ -44,7 +44,10 @@ export default function Analytics() {
       </header>
 
       {/* Monthly Efficiency Score */}
-      <Card className="p-6 bg-slate-900/30 border-white/5">
+      <Card
+        onClick={() => onNavigate('budget')}
+        className="p-6 bg-slate-900/30 border-white/5 cursor-pointer active:scale-[0.99] transition-all"
+      >
         <div className="flex justify-between items-start mb-6">
           <div>
             <p className="text-[10px] text-slate-500 uppercase font-black tracking-widest mb-1">Score de Eficiência</p>

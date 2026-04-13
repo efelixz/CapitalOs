@@ -15,7 +15,8 @@ import {
   PieChart,
   Target,
   ShieldCheck,
-  FileText
+  FileText,
+  PenLine
 } from 'lucide-react';
 import { Card, cn } from '../components/Card';
 import { IconButton } from '../components/IconButton';
@@ -135,10 +136,10 @@ export default function Dashboard({ onNavigate }) {
 
       {/* Quick Actions (Secondary) */}
       <div className="flex justify-between px-1 -mt-4">
-        <IconButton icon={PieChart} label="Distribuir" onClick={() => onNavigate('distribution')} />
-        <IconButton icon={Activity} label="Operar" onClick={() => onNavigate('operations')} />
+        <IconButton icon={PieChart} label="Fluxo" onClick={() => onNavigate('distribution')} />
+        <IconButton icon={Activity} label="Trade" onClick={() => onNavigate('operations')} />
+        <IconButton icon={LayoutGrid} label="Extrato" onClick={() => onNavigate('transactions')} />
         <IconButton icon={FileText} label="Relatórios" onClick={() => onNavigate('reports')} />
-        <IconButton icon={LayoutGrid} label="Conexões" onClick={() => onNavigate('integrations')} />
       </div>
 
       {/* Insight Card */}

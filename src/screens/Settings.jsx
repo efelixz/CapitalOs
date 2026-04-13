@@ -27,7 +27,7 @@ const SettingToggle = ({ label, description, active }) => (
   </div>
 );
 
-export default function Settings({ onBack }) {
+export default function Settings({ onBack, onNavigate }) {
   return (
     <div className="flex flex-col gap-6 pt-4">
       <header className="px-1">
@@ -68,7 +68,10 @@ export default function Settings({ onBack }) {
               <span className="text-xs text-slate-300">Simulador FIRE Avançado</span>
             </div>
           </div>
-          <button className="w-full py-4 rounded-2xl bg-white/5 border border-white/10 text-white font-black text-[10px] uppercase tracking-widest hover:bg-white/10 transition-all">
+          <button
+            onClick={() => onNavigate('subscription')}
+            className="w-full py-4 rounded-2xl bg-white/5 border border-white/10 text-white font-black text-[10px] uppercase tracking-widest hover:bg-white/10 transition-all"
+          >
             Gerenciar Assinatura
           </button>
         </Card>

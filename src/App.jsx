@@ -20,6 +20,10 @@ import Operations from './screens/Operations';
 import Reports from './screens/Reports';
 import Notifications from './screens/Notifications';
 import Integrations from './screens/Integrations';
+import FinancialJournal from './screens/FinancialJournal';
+import TradeExecution from './screens/TradeExecution';
+import SubscriptionFlow from './screens/SubscriptionFlow';
+import HelpCenter from './screens/HelpCenter';
 import Auth from './screens/Auth';
 import RiskProfile from './screens/RiskProfile';
 import Settings from './screens/Settings';
@@ -28,6 +32,8 @@ import PortfolioDetail from './screens/PortfolioDetail';
 import FinancialCalendar from './screens/FinancialCalendar';
 import MigrationRoadmap from './screens/MigrationRoadmap';
 import OperationsTerminal from './screens/OperationsTerminal';
+import AddTransaction from './screens/AddTransaction';
+import Budget from './screens/Budget';
 import { Home, Lightbulb, Briefcase, Target, MessageSquare } from 'lucide-react';
 
 const NavButton = ({ icon: Icon, label, active, onClick }) => (
@@ -55,7 +61,7 @@ export default function App() {
         return <RiskProfile onComplete={() => setCurrentScreen('dashboard')} />;
       case 'settings':
       case 'configuracoes':
-        return <Settings onBack={() => setCurrentScreen('profile')} />;
+        return <Settings onBack={() => setCurrentScreen('profile')} onNavigate={setCurrentScreen} />;
       case 'dashboard':
         return <Dashboard onNavigate={setCurrentScreen} />;
       case 'goals':
@@ -64,6 +70,11 @@ export default function App() {
       case 'health':
       case 'saude':
         return <FinancialHealth onBack={() => setCurrentScreen('dashboard')} />;
+      case 'add_transaction':
+        return <AddTransaction onBack={() => setCurrentScreen('transactions')} />;
+      case 'budget':
+      case 'orcamento':
+        return <Budget onBack={() => setCurrentScreen('dashboard')} />;
       case 'portfolio_detail':
         return <PortfolioDetail onBack={() => setCurrentScreen('wallet')} />;
       case 'calendar':
@@ -72,7 +83,18 @@ export default function App() {
       case 'migration_roadmap':
         return <MigrationRoadmap onBack={() => setCurrentScreen('mobility')} />;
       case 'operations_terminal':
-        return <OperationsTerminal onBack={() => setCurrentScreen('operations')} />;
+        return <OperationsTerminal onBack={() => setCurrentScreen('operations')} onNavigate={setCurrentScreen} />;
+      case 'journal':
+      case 'diario':
+        return <FinancialJournal onBack={() => setCurrentScreen('dashboard')} />;
+      case 'trade_execution':
+        return <TradeExecution onBack={() => setCurrentScreen('dashboard')} />;
+      case 'subscription':
+      case 'assinatura':
+        return <SubscriptionFlow onBack={() => setCurrentScreen('settings')} />;
+      case 'help':
+      case 'suporte':
+        return <HelpCenter onBack={() => setCurrentScreen('profile')} />;
       case 'credit':
       case 'credito':
         return <CreditAnalysis onBack={() => setCurrentScreen('dashboard')} />;
@@ -84,7 +106,7 @@ export default function App() {
         return <Operations onBack={() => setCurrentScreen('dashboard')} onNavigate={setCurrentScreen} />;
       case 'reports':
       case 'relatorios':
-        return <Reports onBack={() => setCurrentScreen('dashboard')} />;
+        return <Reports onBack={() => setCurrentScreen('dashboard')} onNavigate={setCurrentScreen} />;
       case 'notifications':
       case 'notificacoes':
         return <Notifications onBack={() => setCurrentScreen('dashboard')} />;
@@ -94,7 +116,7 @@ export default function App() {
       case 'life_sim':
         return <LifeSimulator onBack={() => setCurrentScreen('goals')} />;
       case 'analytics':
-        return <Analytics />;
+        return <Analytics onNavigate={setCurrentScreen} />;
       case 'chat':
       case 'concierge':
         return <AIChat />;
@@ -110,7 +132,7 @@ export default function App() {
         return <Insights />;
       case 'transactions':
       case 'transacoes':
-        return <Transactions onBack={() => setCurrentScreen('dashboard')} />;
+        return <Transactions onBack={() => setCurrentScreen('dashboard')} onNavigate={setCurrentScreen} />;
       case 'markets':
       case 'mercados':
         return <Markets onBack={() => setCurrentScreen('dashboard')} />;
@@ -126,7 +148,7 @@ export default function App() {
   };
 
   // Hide nav for specific focus flows
-  const showNav = !['landing', 'onboarding', 'auth', 'risk_profile', 'purchase_decision', 'markets', 'mercados', 'health', 'saude', 'life_sim', 'profile', 'mobility', 'debts', 'credit', 'distribution', 'operations', 'reports', 'notifications', 'integrations', 'settings', 'portfolio_detail', 'calendar', 'migration_roadmap', 'operations_terminal'].includes(currentScreen);
+  const showNav = !['landing', 'onboarding', 'auth', 'risk_profile', 'purchase_decision', 'markets', 'mercados', 'health', 'saude', 'life_sim', 'profile', 'mobility', 'debts', 'credit', 'distribution', 'operations', 'reports', 'notifications', 'integrations', 'settings', 'portfolio_detail', 'calendar', 'migration_roadmap', 'operations_terminal', 'journal', 'trade_execution', 'subscription', 'help', 'add_transaction', 'budget'].includes(currentScreen);
 
   return (
     <div className="min-h-screen bg-[#050A10] text-slate-200 font-sans selection:bg-cyan-500/30">

@@ -24,7 +24,7 @@ const LevelMarker = ({ label, value, type, active }) => (
   </div>
 );
 
-export default function OperationsTerminal({ onBack }) {
+export default function OperationsTerminal({ onBack, onNavigate }) {
   return (
     <div className="flex flex-col gap-6 pt-4">
       <header className="px-1">
@@ -86,7 +86,12 @@ export default function OperationsTerminal({ onBack }) {
           Rompimento de resistência histórica com volume institucional. A paridade cambial favorece a permanência no ativo para o Q4.
         </p>
         <div className="grid grid-cols-2 gap-3">
-           <button className="py-3 rounded-xl bg-emerald-500 text-black font-black text-[10px] uppercase tracking-widest shadow-lg">COMPRAR</button>
+           <button
+            onClick={() => onNavigate('trade_execution')}
+            className="py-3 rounded-xl bg-emerald-500 text-black font-black text-[10px] uppercase tracking-widest shadow-lg"
+           >
+            COMPRAR
+           </button>
            <button className="py-3 rounded-xl bg-white/5 border border-white/10 text-white font-black text-[10px] uppercase tracking-widest">VENDER</button>
         </div>
       </Card>
