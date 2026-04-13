@@ -28,9 +28,12 @@ const Wallet = ({ onNavigate }) => {
           <h1 className="text-2xl font-black tracking-tight">Minha Carteira</h1>
           <p className="text-xs text-muted uppercase tracking-widest font-bold mt-1">Patrimônio Estratégico</p>
         </div>
-        <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
+        <button
+          onClick={() => onNavigate('dividend_tracker')}
+          className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors"
+        >
           <PieChart className="text-primary" size={24} />
-        </div>
+        </button>
       </div>
 
       {/* Allocation Chart */}
@@ -100,7 +103,29 @@ const Wallet = ({ onNavigate }) => {
           </button>
         </div>
       </Card>
+
+      <WalletSummary onNavigate={onNavigate} />
     </div>
+  );
+};
+
+const WalletSummary = ({ onNavigate }) => {
+  return (
+    <div className="grid grid-cols-2 gap-4 mb-10">
+        <div
+          onClick={() => onNavigate('stress_test')}
+          className="bg-[#0A121C] border border-slate-800 p-5 rounded-3xl cursor-pointer active:scale-[0.98] transition-all"
+        >
+          <ShieldCheck className="text-emerald-400 mb-3" size={24} />
+          <p className="text-[10px] text-muted uppercase font-black">Risco Total</p>
+          <p className="text-lg font-black text-white">Conservador +</p>
+        </div>
+        <div className="bg-[#0A121C] border border-slate-800 p-5 rounded-3xl">
+          <Globe className="text-indigo-400 mb-3" size={24} />
+          <p className="text-[10px] text-muted uppercase font-black">Globalização</p>
+          <p className="text-lg font-black text-white">15% Offshore</p>
+        </div>
+      </div>
   );
 };
 

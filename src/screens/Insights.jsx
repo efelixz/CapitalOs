@@ -92,6 +92,7 @@ export default function Insights() {
         />
         </div>
 
+        <div onClick={() => onNavigate('subscription_manager')}>
         <InsightCard
           type="Gastos"
           impact="Economia Direta"
@@ -101,6 +102,7 @@ export default function Insights() {
           icon={CreditCard}
           colorClass="bg-cyan-500"
         />
+        </div>
       </div>
     </div>
   );

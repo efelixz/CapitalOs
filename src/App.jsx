@@ -25,6 +25,14 @@ import Rebalancing from './screens/Rebalancing';
 import GeographicOptimization from './screens/GeographicOptimization';
 import TaxStrategy from './screens/TaxStrategy';
 import SecurityAudit from './screens/SecurityAudit';
+import DecisionHistory from './screens/DecisionHistory';
+import WealthEvolution from './screens/WealthEvolution';
+import DividendTracker from './screens/DividendTracker';
+import SubscriptionManager from './screens/SubscriptionManager';
+import EstatePlanning from './screens/EstatePlanning';
+import PortfolioStressTest from './screens/PortfolioStressTest';
+import GlobalSearch from './screens/GlobalSearch';
+import DailyChecklist from './screens/DailyChecklist';
 import FinancialJournal from './screens/FinancialJournal';
 import TradeExecution from './screens/TradeExecution';
 import SubscriptionFlow from './screens/SubscriptionFlow';
@@ -39,7 +47,7 @@ import MigrationRoadmap from './screens/MigrationRoadmap';
 import OperationsTerminal from './screens/OperationsTerminal';
 import AddTransaction from './screens/AddTransaction';
 import Budget from './screens/Budget';
-import { Home, Lightbulb, Briefcase, Target, MessageSquare } from 'lucide-react';
+import { Home, Lightbulb, Briefcase, Target, MessageSquare, Search } from 'lucide-react';
 
 const NavButton = ({ icon: Icon, label, active, onClick }) => (
   <button
@@ -75,6 +83,17 @@ export default function App() {
       case 'health':
       case 'saude':
         return <FinancialHealth onBack={() => setCurrentScreen('dashboard')} />;
+      case 'estate':
+      case 'sucessao':
+        return <EstatePlanning onBack={() => setCurrentScreen('dashboard')} />;
+      case 'stress_test':
+      case 'estresse':
+        return <PortfolioStressTest onBack={() => setCurrentScreen('wallet')} />;
+      case 'search':
+      case 'busca':
+        return <GlobalSearch onBack={() => setCurrentScreen('dashboard')} onNavigate={setCurrentScreen} />;
+      case 'checklist':
+        return <DailyChecklist onBack={() => setCurrentScreen('dashboard')} />;
       case 'rebalancing':
       case 'rebalanceamento':
         return <Rebalancing onBack={() => setCurrentScreen('wallet')} />;
@@ -86,6 +105,18 @@ export default function App() {
       case 'audit':
       case 'auditoria':
         return <SecurityAudit onBack={() => setCurrentScreen('settings')} />;
+      case 'decisions_history':
+      case 'historico':
+        return <DecisionHistory onBack={() => setCurrentScreen('dashboard')} />;
+      case 'wealth_evolution':
+      case 'evolucao':
+        return <WealthEvolution onBack={() => setCurrentScreen('dashboard')} />;
+      case 'dividend_tracker':
+      case 'dividendos':
+        return <DividendTracker onBack={() => setCurrentScreen('wallet')} />;
+      case 'subscription_manager':
+      case 'assinaturas':
+        return <SubscriptionManager onBack={() => setCurrentScreen('settings')} />;
       case 'add_transaction':
         return <AddTransaction onBack={() => setCurrentScreen('transactions')} />;
       case 'budget':
@@ -167,7 +198,7 @@ export default function App() {
   };
 
   // Hide nav for specific focus flows
-  const showNav = !['landing', 'onboarding', 'auth', 'risk_profile', 'purchase_decision', 'markets', 'mercados', 'health', 'saude', 'life_sim', 'profile', 'mobility', 'debts', 'credit', 'distribution', 'operations', 'reports', 'notifications', 'integrations', 'settings', 'portfolio_detail', 'calendar', 'migration_roadmap', 'operations_terminal', 'journal', 'trade_execution', 'subscription', 'help', 'add_transaction', 'budget', 'rebalancing', 'geo_opt', 'tax', 'audit', 'cashflow'].includes(currentScreen);
+  const showNav = !['landing', 'onboarding', 'auth', 'risk_profile', 'purchase_decision', 'markets', 'mercados', 'health', 'saude', 'life_sim', 'profile', 'mobility', 'debts', 'credit', 'distribution', 'operations', 'reports', 'notifications', 'integrations', 'settings', 'portfolio_detail', 'calendar', 'migration_roadmap', 'operations_terminal', 'journal', 'trade_execution', 'subscription', 'help', 'add_transaction', 'budget', 'rebalancing', 'geo_opt', 'tax', 'audit', 'cashflow', 'decisions_history', 'wealth_evolution', 'dividend_tracker', 'subscription_manager', 'estate', 'stress_test', 'search', 'checklist'].includes(currentScreen);
 
   return (
     <div className="min-h-screen bg-[#050A10] text-slate-200 font-sans selection:bg-cyan-500/30">
@@ -201,6 +232,12 @@ export default function App() {
             label="Metas"
             active={currentScreen === 'goals' || currentScreen === 'metas'}
             onClick={() => setCurrentScreen('goals')}
+          />
+          <NavButton
+            icon={Search}
+            label="Busca"
+            active={currentScreen === 'search'}
+            onClick={() => setCurrentScreen('search')}
           />
           <NavButton
             icon={Lightbulb}

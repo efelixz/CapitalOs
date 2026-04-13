@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Bell,
   TrendingUp,
-  Building2,
   Brain,
   Sparkles,
   X,
@@ -16,7 +15,11 @@ import {
   Target,
   ShieldCheck,
   FileText,
-  PenLine
+  PenLine,
+  Scale,
+  Activity,
+  History,
+  ArrowDownLeft
 } from 'lucide-react';
 import { Card, cn } from '../components/Card';
 import { IconButton } from '../components/IconButton';
@@ -52,7 +55,11 @@ export default function Dashboard({ onNavigate }) {
 
       {/* CapitalOS Score & Net Worth Summary */}
       <div className="grid grid-cols-5 gap-4">
-        <Card variant="premium" className="col-span-3 relative overflow-hidden shadow-premium p-6 flex flex-col justify-between min-h-[180px]">
+        <Card
+          onClick={() => onNavigate('wealth_evolution')}
+          variant="premium"
+          className="col-span-3 relative overflow-hidden shadow-premium p-6 flex flex-col justify-between min-h-[180px] cursor-pointer active:scale-[0.98] transition-all"
+        >
           <div className="relative z-10">
             <p className="text-[10px] text-muted uppercase tracking-[0.2em] font-bold mb-2 opacity-80">Patrimônio Líquido</p>
             <div className="flex items-baseline gap-1 mb-4">
@@ -143,8 +150,8 @@ export default function Dashboard({ onNavigate }) {
 
         <IconButton icon={PieChart} label="Ajustar" onClick={() => onNavigate('distribution')} />
         <IconButton icon={Zap} label="Tax" onClick={() => onNavigate('tax')} />
-        <IconButton icon={History} label="Audit" onClick={() => onNavigate('audit')} />
-        <IconButton icon={PenLine} label="Diário" onClick={() => onNavigate('journal')} />
+        <IconButton icon={Scale} label="Legado" onClick={() => onNavigate('estate')} />
+        <IconButton icon={PenLine} label="Checklist" onClick={() => onNavigate('checklist')} />
       </div>
 
       {/* Insight Card */}
@@ -184,7 +191,10 @@ export default function Dashboard({ onNavigate }) {
             </div>
           </Card>
 
-          <Card className="bg-slate-900/40 border-l-4 border-gold py-5">
+          <Card
+            onClick={() => onNavigate('decisions_history')}
+            className="bg-slate-900/40 border-l-4 border-gold py-5 cursor-pointer active:scale-[0.98] transition-all"
+          >
             <div className="flex gap-4">
               <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center border border-gold/20">
                 <Brain size={20} className="text-gold" />
