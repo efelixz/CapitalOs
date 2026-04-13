@@ -20,6 +20,7 @@ import Operations from './screens/Operations';
 import Reports from './screens/Reports';
 import Notifications from './screens/Notifications';
 import Integrations from './screens/Integrations';
+import CashFlow from './screens/CashFlow';
 import Rebalancing from './screens/Rebalancing';
 import GeographicOptimization from './screens/GeographicOptimization';
 import TaxStrategy from './screens/TaxStrategy';
@@ -122,6 +123,9 @@ export default function App() {
       case 'reports':
       case 'relatorios':
         return <Reports onBack={() => setCurrentScreen('dashboard')} onNavigate={setCurrentScreen} />;
+      case 'cashflow':
+      case 'financas':
+        return <CashFlow onBack={() => setCurrentScreen('dashboard')} />;
       case 'notifications':
       case 'notificacoes':
         return <Notifications onBack={() => setCurrentScreen('dashboard')} />;
@@ -163,7 +167,7 @@ export default function App() {
   };
 
   // Hide nav for specific focus flows
-  const showNav = !['landing', 'onboarding', 'auth', 'risk_profile', 'purchase_decision', 'markets', 'mercados', 'health', 'saude', 'life_sim', 'profile', 'mobility', 'debts', 'credit', 'distribution', 'operations', 'reports', 'notifications', 'integrations', 'settings', 'portfolio_detail', 'calendar', 'migration_roadmap', 'operations_terminal', 'journal', 'trade_execution', 'subscription', 'help', 'add_transaction', 'budget', 'rebalancing', 'geo_opt', 'tax', 'audit'].includes(currentScreen);
+  const showNav = !['landing', 'onboarding', 'auth', 'risk_profile', 'purchase_decision', 'markets', 'mercados', 'health', 'saude', 'life_sim', 'profile', 'mobility', 'debts', 'credit', 'distribution', 'operations', 'reports', 'notifications', 'integrations', 'settings', 'portfolio_detail', 'calendar', 'migration_roadmap', 'operations_terminal', 'journal', 'trade_execution', 'subscription', 'help', 'add_transaction', 'budget', 'rebalancing', 'geo_opt', 'tax', 'audit', 'cashflow'].includes(currentScreen);
 
   return (
     <div className="min-h-screen bg-[#050A10] text-slate-200 font-sans selection:bg-cyan-500/30">

@@ -135,11 +135,16 @@ export default function Dashboard({ onNavigate }) {
       </div>
 
       {/* Quick Actions (Secondary) */}
-      <div className="flex justify-between px-1 -mt-4">
-        <IconButton icon={PieChart} label="Fluxo" onClick={() => onNavigate('distribution')} />
+      <div className="grid grid-cols-4 gap-4 px-1 -mt-4">
+        <IconButton icon={ArrowDownLeft} label="Fluxo" onClick={() => onNavigate('cashflow')} />
         <IconButton icon={Activity} label="Trade" onClick={() => onNavigate('operations')} />
         <IconButton icon={LayoutGrid} label="Extrato" onClick={() => onNavigate('transactions')} />
         <IconButton icon={FileText} label="Relatórios" onClick={() => onNavigate('reports')} />
+
+        <IconButton icon={PieChart} label="Ajustar" onClick={() => onNavigate('distribution')} />
+        <IconButton icon={Zap} label="Tax" onClick={() => onNavigate('tax')} />
+        <IconButton icon={History} label="Audit" onClick={() => onNavigate('audit')} />
+        <IconButton icon={PenLine} label="Diário" onClick={() => onNavigate('journal')} />
       </div>
 
       {/* Insight Card */}
