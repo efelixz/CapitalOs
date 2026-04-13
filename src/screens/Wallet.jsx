@@ -92,7 +92,10 @@ const Wallet = ({ onNavigate }) => {
             Sua exposição em <span className="text-white font-bold">Stocks (EUA)</span> está 2% abaixo do alvo.
             O dólar atual em <span className="text-emerald-400 font-bold">R$ 4,92</span> é um ponto de entrada "Excelente".
           </p>
-          <button className="w-full bg-white text-black font-black py-4 rounded-2xl flex items-center justify-center gap-2 hover:bg-cyan-50 transition-colors">
+          <button
+            onClick={() => onNavigate('rebalancing')}
+            className="w-full bg-white text-black font-black py-4 rounded-2xl flex items-center justify-center gap-2 hover:bg-cyan-50 transition-colors"
+          >
             EXECUTAR AJUSTE <ArrowUpRight size={18} />
           </button>
         </div>

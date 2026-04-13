@@ -137,7 +137,10 @@ export default function GlobalMobility({ onBack, onNavigate }) {
       </section>
 
       {/* Risk Alert */}
-      <Card className="p-5 border-l-4 border-orange-500/50 bg-orange-500/5">
+      <Card
+        onClick={() => onNavigate('geo_opt')}
+        className="p-5 border-l-4 border-orange-500/50 bg-orange-500/5 cursor-pointer active:scale-[0.99] transition-all"
+      >
         <div className="flex gap-4">
           <Info className="text-orange-400 flex-shrink-0" size={20} />
           <div>

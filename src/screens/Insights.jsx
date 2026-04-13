@@ -80,6 +80,7 @@ export default function Insights() {
           colorClass="bg-red-500"
         />
 
+        <div onClick={() => onNavigate('tax')}>
         <InsightCard
           type="Oportunidade"
           impact="Eficiência Fiscal"
@@ -89,6 +90,7 @@ export default function Insights() {
           icon={Zap}
           colorClass="bg-gold"
         />
+        </div>
 
         <InsightCard
           type="Gastos"

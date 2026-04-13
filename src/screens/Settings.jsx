@@ -92,10 +92,13 @@ export default function Settings({ onBack, onNavigate }) {
       <section>
         <h3 className="text-[11px] font-black text-slate-500 uppercase tracking-[0.2em] mb-4 px-1">Conta</h3>
         <Card className="px-5">
-           <button className="w-full flex items-center justify-between py-4 border-b border-white/5">
+           <button
+            onClick={() => onNavigate('audit')}
+            className="w-full flex items-center justify-between py-4 border-b border-white/5"
+           >
              <div className="flex items-center gap-3">
                <Database size={18} className="text-slate-400" />
-               <span className="text-sm font-bold text-white">Exportar meus dados (LGPD)</span>
+               <span className="text-sm font-bold text-white">Trilha de Segurança (Audit)</span>
              </div>
              <ChevronRight size={16} className="text-slate-700" />
            </button>

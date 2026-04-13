@@ -20,6 +20,10 @@ import Operations from './screens/Operations';
 import Reports from './screens/Reports';
 import Notifications from './screens/Notifications';
 import Integrations from './screens/Integrations';
+import Rebalancing from './screens/Rebalancing';
+import GeographicOptimization from './screens/GeographicOptimization';
+import TaxStrategy from './screens/TaxStrategy';
+import SecurityAudit from './screens/SecurityAudit';
 import FinancialJournal from './screens/FinancialJournal';
 import TradeExecution from './screens/TradeExecution';
 import SubscriptionFlow from './screens/SubscriptionFlow';
@@ -70,6 +74,17 @@ export default function App() {
       case 'health':
       case 'saude':
         return <FinancialHealth onBack={() => setCurrentScreen('dashboard')} />;
+      case 'rebalancing':
+      case 'rebalanceamento':
+        return <Rebalancing onBack={() => setCurrentScreen('wallet')} />;
+      case 'geo_opt':
+        return <GeographicOptimization onBack={() => setCurrentScreen('mobility')} />;
+      case 'tax':
+      case 'fiscal':
+        return <TaxStrategy onBack={() => setCurrentScreen('insights')} />;
+      case 'audit':
+      case 'auditoria':
+        return <SecurityAudit onBack={() => setCurrentScreen('settings')} />;
       case 'add_transaction':
         return <AddTransaction onBack={() => setCurrentScreen('transactions')} />;
       case 'budget':
@@ -129,7 +144,7 @@ export default function App() {
       case 'carteira':
         return <Wallet onNavigate={setCurrentScreen} />;
       case 'insights':
-        return <Insights />;
+        return <Insights onNavigate={setCurrentScreen} />;
       case 'transactions':
       case 'transacoes':
         return <Transactions onBack={() => setCurrentScreen('dashboard')} onNavigate={setCurrentScreen} />;
@@ -148,7 +163,7 @@ export default function App() {
   };
 
   // Hide nav for specific focus flows
-  const showNav = !['landing', 'onboarding', 'auth', 'risk_profile', 'purchase_decision', 'markets', 'mercados', 'health', 'saude', 'life_sim', 'profile', 'mobility', 'debts', 'credit', 'distribution', 'operations', 'reports', 'notifications', 'integrations', 'settings', 'portfolio_detail', 'calendar', 'migration_roadmap', 'operations_terminal', 'journal', 'trade_execution', 'subscription', 'help', 'add_transaction', 'budget'].includes(currentScreen);
+  const showNav = !['landing', 'onboarding', 'auth', 'risk_profile', 'purchase_decision', 'markets', 'mercados', 'health', 'saude', 'life_sim', 'profile', 'mobility', 'debts', 'credit', 'distribution', 'operations', 'reports', 'notifications', 'integrations', 'settings', 'portfolio_detail', 'calendar', 'migration_roadmap', 'operations_terminal', 'journal', 'trade_execution', 'subscription', 'help', 'add_transaction', 'budget', 'rebalancing', 'geo_opt', 'tax', 'audit'].includes(currentScreen);
 
   return (
     <div className="min-h-screen bg-[#050A10] text-slate-200 font-sans selection:bg-cyan-500/30">
