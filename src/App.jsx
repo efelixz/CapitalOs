@@ -14,6 +14,12 @@ import Analytics from './screens/Analytics';
 import DebtManager from './screens/DebtManager';
 import GlobalMobility from './screens/GlobalMobility';
 import Onboarding from './screens/Onboarding';
+import CreditAnalysis from './screens/CreditAnalysis';
+import MoneyDistribution from './screens/MoneyDistribution';
+import Operations from './screens/Operations';
+import Reports from './screens/Reports';
+import Notifications from './screens/Notifications';
+import Integrations from './screens/Integrations';
 import { Home, Lightbulb, Briefcase, Target, MessageSquare } from 'lucide-react';
 
 const NavButton = ({ icon: Icon, label, active, onClick }) => (
@@ -41,6 +47,24 @@ export default function App() {
       case 'health':
       case 'saude':
         return <FinancialHealth onBack={() => setCurrentScreen('dashboard')} />;
+      case 'credit':
+      case 'credito':
+        return <CreditAnalysis onBack={() => setCurrentScreen('dashboard')} />;
+      case 'distribution':
+      case 'distribuicao':
+        return <MoneyDistribution onBack={() => setCurrentScreen('dashboard')} />;
+      case 'operations':
+      case 'operacoes':
+        return <Operations onBack={() => setCurrentScreen('dashboard')} />;
+      case 'reports':
+      case 'relatorios':
+        return <Reports onBack={() => setCurrentScreen('dashboard')} />;
+      case 'notifications':
+      case 'notificacoes':
+        return <Notifications onBack={() => setCurrentScreen('dashboard')} />;
+      case 'integrations':
+      case 'conexoes':
+        return <Integrations onBack={() => setCurrentScreen('dashboard')} />;
       case 'life_sim':
         return <LifeSimulator onBack={() => setCurrentScreen('goals')} />;
       case 'analytics':
@@ -76,7 +100,7 @@ export default function App() {
   };
 
   // Hide nav for specific focus flows
-  const showNav = !['onboarding', 'purchase_decision', 'markets', 'mercados', 'health', 'saude', 'life_sim', 'profile', 'mobility', 'debts'].includes(currentScreen);
+  const showNav = !['onboarding', 'purchase_decision', 'markets', 'mercados', 'health', 'saude', 'life_sim', 'profile', 'mobility', 'debts', 'credit', 'distribution', 'operations', 'reports', 'notifications', 'integrations'].includes(currentScreen);
 
   return (
     <div className="min-h-screen bg-[#050A10] text-slate-200 font-sans selection:bg-cyan-500/30">

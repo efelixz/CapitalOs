@@ -11,7 +11,11 @@ import {
   Zap,
   LayoutGrid,
   Globe,
-  ShieldAlert
+  ShieldAlert,
+  PieChart,
+  Target,
+  ShieldCheck,
+  FileText
 } from 'lucide-react';
 import { Card, cn } from '../components/Card';
 import { IconButton } from '../components/IconButton';
@@ -36,7 +40,10 @@ export default function Dashboard({ onNavigate }) {
             </h1>
           </div>
         </div>
-        <button className="relative p-2.5 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors group">
+        <button
+          onClick={() => onNavigate('notifications')}
+          className="relative p-2.5 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors group"
+        >
           <Bell className="text-primary group-hover:scale-110 transition-transform" size={22} />
           <span className="absolute top-2.5 right-2.5 w-2.5 h-2.5 bg-accent rounded-full border-2 border-background"></span>
         </button>
@@ -118,12 +125,20 @@ export default function Dashboard({ onNavigate }) {
         ))}
       </div>
 
-      {/* Quick Actions */}
+      {/* Quick Actions (Primary) */}
       <div className="flex justify-between px-1">
-        <IconButton icon={TrendingUp} label="Simular" onClick={() => onNavigate('purchase_decision')} />
-        <IconButton icon={Building2} label="Investir" onClick={() => onNavigate('wallet')} />
+        <IconButton icon={TrendingUp} label="Compra" onClick={() => onNavigate('purchase_decision')} />
+        <IconButton icon={ShieldCheck} label="Crédito" onClick={() => onNavigate('credit')} />
         <IconButton icon={ShieldAlert} label="Dívidas" onClick={() => onNavigate('debts')} />
-        <IconButton icon={Globe} label="Mudar" onClick={() => onNavigate('mobility')} />
+        <IconButton icon={Globe} label="Mobilidade" onClick={() => onNavigate('mobility')} />
+      </div>
+
+      {/* Quick Actions (Secondary) */}
+      <div className="flex justify-between px-1 -mt-4">
+        <IconButton icon={PieChart} label="Distribuir" onClick={() => onNavigate('distribution')} />
+        <IconButton icon={Activity} label="Operar" onClick={() => onNavigate('operations')} />
+        <IconButton icon={FileText} label="Relatórios" onClick={() => onNavigate('reports')} />
+        <IconButton icon={LayoutGrid} label="Conexões" onClick={() => onNavigate('integrations')} />
       </div>
 
       {/* Insight Card */}
