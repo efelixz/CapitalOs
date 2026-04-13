@@ -58,7 +58,7 @@ const CountryComparison = ({ country, flag, viability, cost, tax, safety, score,
   </Card>
 );
 
-export default function GlobalMobility({ onBack }) {
+export default function GlobalMobility({ onBack, onNavigate }) {
   const [selected, setSelected] = useState('Portugal');
 
   return (

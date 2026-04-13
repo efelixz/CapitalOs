@@ -23,6 +23,11 @@ import Integrations from './screens/Integrations';
 import Auth from './screens/Auth';
 import RiskProfile from './screens/RiskProfile';
 import Settings from './screens/Settings';
+import LandingPage from './screens/LandingPage';
+import PortfolioDetail from './screens/PortfolioDetail';
+import FinancialCalendar from './screens/FinancialCalendar';
+import MigrationRoadmap from './screens/MigrationRoadmap';
+import OperationsTerminal from './screens/OperationsTerminal';
 import { Home, Lightbulb, Briefcase, Target, MessageSquare } from 'lucide-react';
 
 const NavButton = ({ icon: Icon, label, active, onClick }) => (
@@ -36,10 +41,12 @@ const NavButton = ({ icon: Icon, label, active, onClick }) => (
 );
 
 export default function App() {
-  const [currentScreen, setCurrentScreen] = useState('onboarding');
+  const [currentScreen, setCurrentScreen] = useState('landing');
 
   const renderScreen = () => {
     switch (currentScreen) {
+      case 'landing':
+        return <LandingPage onStart={() => setCurrentScreen('onboarding')} />;
       case 'onboarding':
         return <Onboarding onComplete={() => setCurrentScreen('auth')} />;
       case 'auth':
@@ -57,6 +64,15 @@ export default function App() {
       case 'health':
       case 'saude':
         return <FinancialHealth onBack={() => setCurrentScreen('dashboard')} />;
+      case 'portfolio_detail':
+        return <PortfolioDetail onBack={() => setCurrentScreen('wallet')} />;
+      case 'calendar':
+      case 'calendario':
+        return <FinancialCalendar onBack={() => setCurrentScreen('dashboard')} />;
+      case 'migration_roadmap':
+        return <MigrationRoadmap onBack={() => setCurrentScreen('mobility')} />;
+      case 'operations_terminal':
+        return <OperationsTerminal onBack={() => setCurrentScreen('operations')} />;
       case 'credit':
       case 'credito':
         return <CreditAnalysis onBack={() => setCurrentScreen('dashboard')} />;
@@ -65,7 +81,7 @@ export default function App() {
         return <MoneyDistribution onBack={() => setCurrentScreen('dashboard')} />;
       case 'operations':
       case 'operacoes':
-        return <Operations onBack={() => setCurrentScreen('dashboard')} />;
+        return <Operations onBack={() => setCurrentScreen('dashboard')} onNavigate={setCurrentScreen} />;
       case 'reports':
       case 'relatorios':
         return <Reports onBack={() => setCurrentScreen('dashboard')} />;
@@ -103,14 +119,14 @@ export default function App() {
         return <DebtManager onBack={() => setCurrentScreen('dashboard')} />;
       case 'mobility':
       case 'mobilidade':
-        return <GlobalMobility onBack={() => setCurrentScreen('dashboard')} />;
+        return <GlobalMobility onBack={() => setCurrentScreen('dashboard')} onNavigate={setCurrentScreen} />;
       default:
         return <Dashboard onNavigate={setCurrentScreen} />;
     }
   };
 
   // Hide nav for specific focus flows
-  const showNav = !['onboarding', 'auth', 'risk_profile', 'purchase_decision', 'markets', 'mercados', 'health', 'saude', 'life_sim', 'profile', 'mobility', 'debts', 'credit', 'distribution', 'operations', 'reports', 'notifications', 'integrations', 'settings'].includes(currentScreen);
+  const showNav = !['landing', 'onboarding', 'auth', 'risk_profile', 'purchase_decision', 'markets', 'mercados', 'health', 'saude', 'life_sim', 'profile', 'mobility', 'debts', 'credit', 'distribution', 'operations', 'reports', 'notifications', 'integrations', 'settings', 'portfolio_detail', 'calendar', 'migration_roadmap', 'operations_terminal'].includes(currentScreen);
 
   return (
     <div className="min-h-screen bg-[#050A10] text-slate-200 font-sans selection:bg-cyan-500/30">

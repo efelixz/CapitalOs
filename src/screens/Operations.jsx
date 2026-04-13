@@ -13,8 +13,8 @@ import {
 } from 'lucide-react';
 import { Card, cn } from '../components/Card';
 
-const OperationItem = ({ symbol, type, price, change, quality, icon: Icon }) => (
-  <div className="flex items-center gap-4 py-4 border-b border-white/5 last:border-0">
+const OperationItem = ({ symbol, type, price, change, quality, icon: Icon, onClick }) => (
+  <div onClick={onClick} className="flex items-center gap-4 py-4 border-b border-white/5 last:border-0 cursor-pointer group">
     <div className={cn("p-3 rounded-2xl bg-opacity-10", type === 'long' ? "bg-emerald-500" : "bg-red-500")}>
       <Icon className={type === 'long' ? "text-emerald-400" : "text-red-400"} size={20} />
     </div>
@@ -31,7 +31,7 @@ const OperationItem = ({ symbol, type, price, change, quality, icon: Icon }) => 
   </div>
 );
 
-export default function Operations({ onBack }) {
+export default function Operations({ onBack, onNavigate }) {
   return (
     <div className="flex flex-col gap-6 pt-4">
       <header className="px-1">
@@ -74,7 +74,7 @@ export default function Operations({ onBack }) {
       <section>
         <h3 className="text-[11px] font-black text-slate-500 uppercase tracking-[0.2em] mb-4 px-1">Watchlist IA</h3>
         <Card className="px-5">
-          <OperationItem symbol="IVVB11" type="long" price="R$ 312,45" change="+1.2%" quality={94} icon={TrendingUp} />
+          <OperationItem symbol="IVVB11" type="long" price="R$ 312,45" change="+1.2%" quality={94} icon={TrendingUp} onClick={() => onNavigate('operations_terminal')} />
           <OperationItem symbol="BOVA11" type="short" price="R$ 118,20" change="-0.8%" quality={82} icon={TrendingDown} />
           <OperationItem symbol="PETR4" type="long" price="R$ 38,15" change="+4.2%" quality={45} icon={TrendingUp} />
           <OperationItem symbol="VALE3" type="long" price="R$ 62,30" change="+0.1%" quality={76} icon={TrendingUp} />

@@ -195,7 +195,10 @@ export default function Dashboard({ onNavigate }) {
 
       {/* Financial Status Cards */}
       <div className="grid grid-cols-1 gap-5">
-        <Card className="flex flex-col gap-5 hover:bg-white/5 transition-colors group">
+        <Card
+          onClick={() => onNavigate('calendar')}
+          className="flex flex-col gap-5 hover:bg-white/5 transition-colors group cursor-pointer"
+        >
           <div className="flex items-center justify-between">
             <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center border border-indigo-500/20">
               <CreditCard className="text-indigo-400" size={24} />

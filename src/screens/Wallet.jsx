@@ -53,7 +53,11 @@ const Wallet = ({ onNavigate }) => {
         <h2 className="text-sm font-black uppercase tracking-widest text-muted mb-4">Alocação por Classe</h2>
         <div className="space-y-3">
           {assets.map((asset) => (
-            <div key={asset.name} className="bg-white/5 border border-white/5 rounded-2xl p-4 flex items-center justify-between group hover:bg-white/10 transition-colors">
+            <div
+              key={asset.name}
+              onClick={() => asset.name.includes('Brasil') && onNavigate('portfolio_detail')}
+              className="bg-white/5 border border-white/5 rounded-2xl p-4 flex items-center justify-between group hover:bg-white/10 transition-colors cursor-pointer"
+            >
               <div className="flex items-center gap-4">
                 <div className={cn("w-1.5 h-10 rounded-full", asset.color)}></div>
                 <div>
