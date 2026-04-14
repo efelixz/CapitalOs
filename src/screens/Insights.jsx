@@ -117,6 +117,18 @@ export default function Insights({ onNavigate }) {
           />
         </div>
 
+        <div onClick={() => onNavigate('impact')}>
+          <InsightCard
+            type="Social"
+            impact="94 Impact Score"
+            title="Capital com Propósito"
+            description="Seu portfólio de filantropia está gerando impacto em 12 comunidades. Veja seu novo relatório de ESG."
+            actionLabel="Ver Impacto"
+            icon={Heart}
+            colorClass="bg-rose-500"
+          />
+        </div>
+
         <div onClick={() => onNavigate('subscription_manager')}>
           <InsightCard
             type="Gastos"

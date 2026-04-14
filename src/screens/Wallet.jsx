@@ -7,7 +7,9 @@ import {
   Globe,
   Layers,
   Sparkles,
-  ChevronRight
+  ChevronRight,
+  Zap,
+  Briefcase
 } from 'lucide-react';
 import { Card, cn } from '../components/Card';
 
@@ -58,7 +60,11 @@ const Wallet = ({ onNavigate }) => {
           {assets.map((asset) => (
             <div
               key={asset.name}
-              onClick={() => asset.name.includes('Brasil') && onNavigate('portfolio_detail')}
+              onClick={() => {
+                if (asset.name.includes('Renda Fixa')) onNavigate('fixed_income');
+                else if (asset.name.includes('Criptoativos')) onNavigate('venture_capital');
+                else if (asset.name.includes('Brasil')) onNavigate('portfolio_detail');
+              }}
               className="bg-white/5 border border-white/5 rounded-2xl p-4 flex items-center justify-between group hover:bg-white/10 transition-colors cursor-pointer"
             >
               <div className="flex items-center gap-4">
@@ -77,6 +83,24 @@ const Wallet = ({ onNavigate }) => {
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Alternative Markets Shortcut */}
+      <div className="grid grid-cols-2 gap-4">
+        <button
+          onClick={() => onNavigate('fixed_income')}
+          className="flex items-center gap-3 p-4 rounded-2xl border border-white/5 bg-white/5 hover:bg-white/10 transition-colors"
+        >
+          <Zap className="w-5 h-5 text-amber-400" />
+          <span className="text-xs font-bold text-white uppercase tracking-tighter">Renda Fixa</span>
+        </button>
+        <button
+          onClick={() => onNavigate('venture_capital')}
+          className="flex items-center gap-3 p-4 rounded-2xl border border-white/5 bg-white/5 hover:bg-white/10 transition-colors"
+        >
+          <Briefcase className="w-5 h-5 text-indigo-400" />
+          <span className="text-xs font-bold text-white uppercase tracking-tighter">Venture Capital</span>
+        </button>
       </div>
 
       {/* AI Recommendation */}

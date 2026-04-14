@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Bell,
   TrendingUp,
+  Users,
   Brain,
   Sparkles,
   X,
@@ -149,7 +150,7 @@ export default function Dashboard({ onNavigate }) {
         <IconButton icon={FileText} label="Relatórios" onClick={() => onNavigate('reports')} />
 
         <IconButton icon={PieChart} label="Ajustar" onClick={() => onNavigate('distribution')} />
-        <IconButton icon={Zap} label="Tax" onClick={() => onNavigate('tax')} />
+        <IconButton icon={Users} label="Família" onClick={() => onNavigate('family_office')} />
         <IconButton icon={Scale} label="Legado" onClick={() => onNavigate('estate')} />
         <IconButton icon={PenLine} label="Checklist" onClick={() => onNavigate('checklist')} />
       </div>

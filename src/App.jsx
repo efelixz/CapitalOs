@@ -50,6 +50,15 @@ import Budget from './screens/Budget';
 import BehavioralInsights from './screens/BehavioralInsights';
 import AssetDiscovery from './screens/AssetDiscovery';
 import RiskLimits from './screens/RiskLimits';
+import FamilyOffice from './screens/FamilyOffice';
+import ImpactPhilanthropy from './screens/ImpactPhilanthropy';
+import FixedIncomeDetail from './screens/FixedIncomeDetail';
+import VentureCapital from './screens/VentureCapital';
+import RealEstateHub from './screens/RealEstateHub';
+import PortfolioArchitect from './screens/PortfolioArchitect';
+import InsuranceHub from './screens/InsuranceHub';
+import AlternativeAssets from './screens/AlternativeAssets';
+import TaxLossHarvesting from './screens/TaxLossHarvesting';
 import { Home, Lightbulb, Briefcase, Target, MessageSquare, Search } from 'lucide-react';
 
 const NavButton = ({ icon: Icon, label, active, onClick }) => (
@@ -109,6 +118,26 @@ export default function App() {
       case 'risk_limits':
       case 'travas':
         return <RiskLimits onBack={() => setCurrentScreen('stress_test')} />;
+      case 'family_office':
+        return <FamilyOffice onBack={() => setCurrentScreen('dashboard')} />;
+      case 'impact':
+      case 'filantropia':
+        return <ImpactPhilanthropy onBack={() => setCurrentScreen('insights')} />;
+      case 'fixed_income':
+      case 'renda_fixa':
+        return <FixedIncomeDetail onBack={() => setCurrentScreen('wallet')} />;
+      case 'venture_capital':
+        return <VentureCapital onBack={() => setCurrentScreen('wallet')} />;
+      case 'real_estate':
+        return <RealEstateHub onBack={() => setCurrentScreen('wallet')} />;
+      case 'portfolio_architect':
+        return <PortfolioArchitect onBack={() => setCurrentScreen('wallet')} />;
+      case 'insurance':
+        return <InsuranceHub onBack={() => setCurrentScreen('dashboard')} />;
+      case 'alternative_assets':
+        return <AlternativeAssets onBack={() => setCurrentScreen('wallet')} />;
+      case 'tax_loss':
+        return <TaxLossHarvesting onBack={() => setCurrentScreen('insights')} />;
       case 'geo_opt':
         return <GeographicOptimization onBack={() => setCurrentScreen('mobility')} />;
       case 'tax':
@@ -210,7 +239,7 @@ export default function App() {
   };
 
   // Hide nav for specific focus flows
-  const showNav = !['landing', 'onboarding', 'auth', 'risk_profile', 'purchase_decision', 'markets', 'mercados', 'health', 'saude', 'life_sim', 'profile', 'mobility', 'debts', 'credit', 'distribution', 'operations', 'reports', 'notifications', 'integrations', 'settings', 'portfolio_detail', 'calendar', 'migration_roadmap', 'operations_terminal', 'journal', 'trade_execution', 'subscription', 'help', 'add_transaction', 'budget', 'rebalancing', 'geo_opt', 'tax', 'audit', 'cashflow', 'decisions_history', 'wealth_evolution', 'dividend_tracker', 'subscription_manager', 'estate', 'stress_test', 'search', 'checklist', 'behavioral', 'comportamental', 'discovery', 'descoberta', 'risk_limits', 'travas'].includes(currentScreen);
+  const showNav = !['landing', 'onboarding', 'auth', 'risk_profile', 'purchase_decision', 'markets', 'mercados', 'health', 'saude', 'life_sim', 'profile', 'mobility', 'debts', 'credit', 'distribution', 'operations', 'reports', 'notifications', 'integrations', 'settings', 'portfolio_detail', 'calendar', 'migration_roadmap', 'operations_terminal', 'journal', 'trade_execution', 'subscription', 'help', 'add_transaction', 'budget', 'rebalancing', 'geo_opt', 'tax', 'audit', 'cashflow', 'decisions_history', 'wealth_evolution', 'dividend_tracker', 'subscription_manager', 'estate', 'stress_test', 'checklist', 'behavioral', 'comportamental', 'discovery', 'descoberta', 'risk_limits', 'travas', 'family_office', 'impact', 'filantropia', 'fixed_income', 'renda_fixa', 'venture_capital', 'real_estate', 'portfolio_architect', 'insurance', 'alternative_assets', 'tax_loss'].includes(currentScreen);
 
   return (
     <div className="min-h-screen bg-[#050A10] text-slate-200 font-sans selection:bg-cyan-500/30">

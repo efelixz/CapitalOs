@@ -26,8 +26,8 @@ test('verify complete user lifecycle', async ({ page }) => {
   await expect(page.locator('text=Patrimônio Líquido')).toBeVisible();
   await expect(page.locator('text=Prioridade #1')).toBeVisible();
 
-  // 6. Navigation Check (5 tabs)
-  await expect(page.locator('nav button')).toHaveCount(5);
+  // 6. Navigation Check (6 tabs)
+  await expect(page.locator('nav button')).toHaveCount(6);
 
   // 7. Drill-down Check (Extrato)
   await page.locator('button:has-text("Extrato")').click();
