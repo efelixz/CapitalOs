@@ -32,7 +32,7 @@ const ScenarioCard = ({ title, impact, description, recoveryTime, status }) => (
   </Card>
 );
 
-export default function PortfolioStressTest({ onBack }) {
+export default function PortfolioStressTest({ onBack, onNavigate }) {
   return (
     <div className="flex flex-col gap-6 pt-4">
       <header className="px-1">
@@ -90,7 +90,11 @@ export default function PortfolioStressTest({ onBack }) {
       </section>
 
       {/* Hedge Recommendation */}
-      <Card variant="insight" className="border-l-4 border-cyan-500 py-6 mb-10">
+      <Card
+        onClick={() => onNavigate('risk_limits')}
+        variant="insight"
+        className="border-l-4 border-cyan-500 py-6 mb-10 cursor-pointer active:scale-[0.99] transition-all"
+      >
         <div className="flex gap-4">
            <Zap className="text-cyan-400 flex-shrink-0" size={24} />
            <div>

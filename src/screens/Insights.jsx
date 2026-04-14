@@ -6,7 +6,8 @@ import {
   ArrowRight,
   ShieldCheck,
   CreditCard,
-  Zap
+  Zap,
+  Brain
 } from 'lucide-react';
 
 const InsightCard = ({ type, title, description, impact, actionLabel, icon: Icon, colorClass }) => {
@@ -81,27 +82,51 @@ export default function Insights({ onNavigate }) {
         />
 
         <div onClick={() => onNavigate('tax')}>
-        <InsightCard
-          type="Oportunidade"
-          impact="Eficiência Fiscal"
-          title="Aporte em PGBL"
-          description="Um aporte de R$ 12.000 em PGBL até 31/12 pode gerar uma restituição de R$ 3.300 no próximo ano."
-          actionLabel="Simular Benefício"
-          icon={Zap}
-          colorClass="bg-gold"
-        />
+          <InsightCard
+            type="Oportunidade"
+            impact="Eficiência Fiscal"
+            title="Aporte em PGBL"
+            description="Um aporte de R$ 12.000 em PGBL até 31/12 pode gerar uma restituição de R$ 3.300 no próximo ano."
+            actionLabel="Simular Benefício"
+            icon={Zap}
+            colorClass="bg-gold"
+          />
+        </div>
+
+        <div onClick={() => onNavigate('behavioral')}>
+          <InsightCard
+            type="Psicologia"
+            impact="Viés Detectado"
+            title="Aversão à Perda"
+            description="Você está mantendo ativos no prejuízo por razões emocionais. Nossa IA detectou um padrão de 'hold' irracional."
+            actionLabel="Analisar Comportamento"
+            icon={Brain}
+            colorClass="bg-indigo-500"
+          />
+        </div>
+
+        <div onClick={() => onNavigate('discovery')}>
+          <InsightCard
+            type="Radar"
+            impact="Alpha +12%"
+            title="Novas Oportunidades"
+            description="Encontramos 3 ativos que se encaixam no seu perfil e possuem score de recomendação acima de 85."
+            actionLabel="Ver Descobertas"
+            icon={Sparkles}
+            colorClass="bg-cyan-500"
+          />
         </div>
 
         <div onClick={() => onNavigate('subscription_manager')}>
-        <InsightCard
-          type="Gastos"
-          impact="Economia Direta"
-          title="Assinaturas Fantasmas"
-          description="Detectamos 3 serviços de streaming com conteúdo duplicado. Cancelar o 'StreamMax' economiza R$ 54,90/mês."
-          actionLabel="Revisar"
-          icon={CreditCard}
-          colorClass="bg-cyan-500"
-        />
+          <InsightCard
+            type="Gastos"
+            impact="Economia Direta"
+            title="Assinaturas Fantasmas"
+            description="Detectamos 3 serviços de streaming com conteúdo duplicado. Cancelar o 'StreamMax' economiza R$ 54,90/mês."
+            actionLabel="Revisar"
+            icon={CreditCard}
+            colorClass="bg-red-500"
+          />
         </div>
       </div>
     </div>
