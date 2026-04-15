@@ -74,6 +74,10 @@ const NavButton = ({ icon: Icon, label, active, onClick }) => (
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState('landing');
 
+  React.useEffect(() => {
+    window.setCapitalOSScreen = (screen) => setCurrentScreen(screen);
+  }, []);
+
   const renderScreen = () => {
     switch (currentScreen) {
       case 'landing':
